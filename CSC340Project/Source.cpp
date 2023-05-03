@@ -1,8 +1,7 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
+template<typename T>
 class Node {
 public:
 	Node() {
@@ -10,25 +9,14 @@ public:
 		this->next = nullptr;
 		this->prev = nullptr;
 	}
-	Node(string data) {
+	Node(T data) {
 		this->data = data;
 		this->next = nullptr;
 		this->prev = nullptr;
 	}
-	Node(string data, Node* prev) {
-		this->data = data;
-		this->prev = prev;
-		this->next = nullptr;
-	}
-	Node(string data, Node* prev, Node* next) {
-		this->data = data;
-		this->prev = prev;
-		this->next = next;
-	}
-	virtual ~Node();
 
 	// getters
-	string getData() {
+	T getData() {
 		return this->data;
 	}
 
@@ -41,7 +29,7 @@ public:
 	}
 
 	// setters
-	void setData(string data) {
+	void setData(T data) {
 		this->data = data;
 	}
 
@@ -61,185 +49,134 @@ public:
 	}
 
 private:
-	string data;
-	Node* next;
-	Node* prev;
+	T data;
+	Node<T>* next;
+	Node<T>* prev;
 };
 
-Node::~Node() {
-	this->next = nullptr;
-	this->prev = nullptr;
-	//delete this;
-}
-
+template<typename T>
 class LinkedList {
 public:
 	LinkedList() {
 		this->head = nullptr;
 		this->tail = nullptr;
 	}
-	LinkedList(Node* head) {
-		this->head = head;
-		this->tail = head;
-	}
-	LinkedList(Node* head, Node* tail) {
-		this->head = head;
-		this->tail = tail;
-	}
 
-	virtual ~LinkedList();
-	void insertNode(string value);
-	Node* searchLinkedList(string target);
-	void printLinkedList();
-	void deleteNode(string target);
+	void add(T data) {
+		Node<T>* newNode = new Node(data);
 
-private:
-	Node* head;
-	Node* tail;
-};
+		if (head == nullptr) {
+			head = newNode;
+			tail = newNode;
+			return;
+		}
 
-LinkedList::~LinkedList() {
-	Node* tempNode = this->head;
-	while (tempNode && tempNode->getNextNode()) {
-		tempNode = tempNode->getNextNode();
-		delete tempNode->getPreviousNode();
-	}
-	this->head = nullptr;
-	this->tail = nullptr;
-	cout << "Linked List Deleted";
-}
-
-void LinkedList::insertNode(string value) {
-
-	if (!this->head) {
-		Node* newNode = new Node(value);
-		head = newNode;
-		tail = newNode;
-	}
-	else if (value < this->head->getData()) {
-		Node* newNode = new Node(value, nullptr, head);
-		head->setPreviousNode(newNode);
-		head = newNode;
-	}
-	else if (value > this->tail->getData()) {
-		Node* newNode = new Node(value, this->tail, nullptr);
-		tail->setNextNode(newNode);
-		tail = newNode;
-	}
-	else {
-		Node* temp = head;
-		while (temp && temp->getNextNode()) {
-			if (value > temp->getData() && value < temp->getNextNode()->getData()) {
-				Node* newNode = new Node(value, temp, temp->getNextNode());
-				temp->getNextNode()->setPreviousNode(newNode);
-				temp->setNextNode(newNode);
-			}
+		Node<T>* temp = head;
+		while (temp->getNextNode() != nullptr) {
 			temp = temp->getNextNode();
 		}
+		temp->setNextNode(newNode);
+		newNode->setPreviousNode(temp);
+		tail = newNode;
 	}
 
+	Node<T>* search(T data) {
+		Node<T>* temp = head;
 
-}
+		if (head == nullptr) {
+			std::cout << "The list is empty. Nothing to search for" << std::endl;
+			return nullptr;
+		}
 
-Node* LinkedList::searchLinkedList(string target) {
-	Node* temp = this->head;
+		while (temp != nullptr) {
+			if (temp->getData() == data) {
+				std::cout << "Node was found!" << std::endl;
+				return temp;
+			}
 
-	if (temp == nullptr) {
-		cout << "The list is empty. Nothing to search for" << endl;
+			temp = temp->getNextNode();
+		}
+
+		std::cout << "Node not found" << std::endl;
 		return nullptr;
 	}
 
-	while (temp) {
-		if (temp->getData() == target) {
-			cout << "Node was found!" << endl;
-			return temp;
+	//    void remove(T data) {
+	//
+	//        if (head->getData() == data) {
+	//            Node<T>* tempHead = head;
+	//
+	//            head = head->getNextNode();
+	//            head->setPrevNodeNull();
+	//
+	//            delete tempHead;
+	//        }
+	//
+	//       else if (tail->getData() == data) {
+	//            Node<T>* tempTail = tail;
+	//
+	//            tail = tail->getPreviousNode();
+	//            tail->setNextNodeNull();
+	//
+	//            delete tempTail;
+	//        }
+	//
+	//       else {
+	//
+	//           Node<T>* temp = node;
+	//           Node<T>* previousNode = node->getPreviousNode();
+	//           Node<T>* nextNode = node->getNextNode();
+	//
+	//           previousNode->setNextNode(nextNode);
+	//           nextNode->setPreviousNode(previousNode);
+	//
+	//           delete temp;
+	//
+	//       }
+	//    }
+
+	void printLinkedList() {
+		Node<T>* temp = head;
+
+		if (head == nullptr) {
+			std::cout << "The linked list is empty." << std::endl;
+			return;
 		}
 
-		temp = temp->getNextNode();
-	}
-
-	cout << "Node not found" << endl;
-	return nullptr;
-}
-
-void LinkedList::deleteNode(string target) {
-
-	if (this->head->getData() == target) {
-		Node* tempHead = this->head;
-
-		if ((this->head = this->head->getNextNode()) != nullptr) {
-			this->head->setPrevNodeNull();
-		}
-
-		delete tempHead;
-	}
-
-	else if (this->tail->getData() == target) {
-		Node* tempTail = this->tail;
-
-		if ((this->tail = this->tail->getPreviousNode()) != nullptr) {
-			this->tail->setNextNodeNull();
-		}
-
-		delete tempTail;
-	}
-
-	else {
-
-		Node* temp = head;
-		while (temp) {
-			if (temp->getData() == target) {
-				Node* previousNode = temp->getPreviousNode();
-				Node* nextNode = temp->getNextNode();
-
-				previousNode->setNextNode(nextNode);
-				nextNode->setPreviousNode(previousNode);
-
-				delete temp;
-
-				return;
-			}
-
+		while (temp != nullptr) {
+			std::cout << temp->getData() << " ";
 			temp = temp->getNextNode();
 		}
-	}
-}
 
-void LinkedList::printLinkedList() {
-	Node* temp = this->head;
-
-	if (this->head == nullptr) {
-		cout << "The linked list is empty." << endl;
-		return;
+		std::cout << std::endl;
 	}
 
-	while (temp != nullptr) {
-		cout << temp->getData() << endl;
-		temp = temp->getNextNode();
-	}
+private:
+	Node<T>* head;
+	Node<T>* tail;
+};
 
-}
+
 
 int main(int argc, const char* argv[]) {
 
-	LinkedList* list = new LinkedList();
+	LinkedList<int>* list = new LinkedList<int>();
+	LinkedList<std::string>* stringList = new LinkedList<std::string>();
 
-	list->insertNode("Abbacus");
-	list->insertNode("Coral");
-	list->insertNode("Zoo");
-	list->insertNode("Dino");
-
-	list->searchLinkedList("Zoo");
-
-	list->printLinkedList();
-
-	list->deleteNode("Zoo");
-
-	list->searchLinkedList("Zoo");
+	list->add(3);
+	list->add(4);
+	list->add(5);
+	list->add(5);
+	list->add(5);
+	list->add(5);
 
 	list->printLinkedList();
 
-	delete list;
+	stringList->add("Hello");
+	stringList->add("Team");
+	stringList->printLinkedList();
+
+
 
 	return 0;
 }
