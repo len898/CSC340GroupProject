@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 class Node {
 public:
 	Node() {
@@ -8,25 +10,25 @@ public:
 		this->next = nullptr;
 		this->prev = nullptr;
 	}
-	Node(std::string data) {
+	Node(string data) {
 		this->data = data;
 		this->next = nullptr;
 		this->prev = nullptr;
 	}
-	Node(std::string data, Node* prev) {
+	Node(string data, Node* prev) {
 		this->data = data;
 		this->prev = prev;
 		this->next = nullptr;
 	}
-	Node(std::string data, Node* prev, Node* next) {
+	Node(string data, Node* prev, Node* next) {
 		this->data = data;
 		this->prev = prev;
 		this->next = next;
 	}
-	~Node();
+	virtual ~Node();
 
 	// getters
-	std::string getData() {
+	string getData() {
 		return this->data;
 	}
 
@@ -39,7 +41,7 @@ public:
 	}
 
 	// setters
-	void setData(std::string data) {
+	void setData(string data) {
 		this->data = data;
 	}
 
@@ -59,7 +61,7 @@ public:
 	}
 
 private:
-	std::string data;
+	string data;
 	Node* next;
 	Node* prev;
 };
@@ -85,11 +87,11 @@ public:
 		this->tail = tail;
 	}
 
-	~LinkedList();
-	void insertNode(std::string value);
-	Node* searchLinkedList(std::string target);
+	virtual ~LinkedList();
+	void insertNode(string value);
+	Node* searchLinkedList(string target);
 	void printLinkedList();
-	void deleteNode(Node* node);
+	void deleteNode(string target);
 
 private:
 	Node* head;
@@ -104,10 +106,10 @@ LinkedList::~LinkedList() {
 	}
 	this->head = nullptr;
 	this->tail = nullptr;
-	std::cout << "Linked List Deleted";
+	cout << "Linked List Deleted";
 }
 
-void LinkedList::insertNode(std::string value) {
+void LinkedList::insertNode(string value) {
 
 	if (!this->head) {
 		Node* newNode = new Node(value);
@@ -139,71 +141,80 @@ void LinkedList::insertNode(std::string value) {
 
 }
 
-Node* LinkedList::searchLinkedList(std::string target) {
+Node* LinkedList::searchLinkedList(string target) {
 	Node* temp = this->head;
 
 	if (temp == nullptr) {
-		std::cout << "The list is empty. Nothing to search for" << std::endl;
+		cout << "The list is empty. Nothing to search for" << endl;
 		return nullptr;
 	}
 
 	while (temp) {
 		if (temp->getData() == target) {
-			std::cout << "Node was found!" << std::endl;
+			cout << "Node was found!" << endl;
 			return temp;
 		}
 
 		temp = temp->getNextNode();
 	}
 
-	std::cout << "Node not found" << std::endl;
+	cout << "Node not found" << endl;
 	return nullptr;
 }
 
-void LinkedList::deleteNode(Node* node) {
+void LinkedList::deleteNode(string target) {
 
-	if (head == node) {
-		Node* tempHead = head;
+	if (this->head->getData() == target) {
+		Node* tempHead = this->head;
 
-		head = head->getNextNode();
-		head->setPrevNodeNull();
+		if ((this->head = this->head->getNextNode()) != nullptr) {
+			this->head->setPrevNodeNull();
+		}
 
 		delete tempHead;
 	}
 
-	else if (tail == node) {
-		Node* tempTail = tail;
+	else if (this->tail->getData() == target) {
+		Node* tempTail = this->tail;
 
-		tail = tail->getPreviousNode();
-		tail->setNextNodeNull();
+		if ((this->tail = this->tail->getPreviousNode()) != nullptr) {
+			this->tail->setNextNodeNull();
+		}
 
 		delete tempTail;
 	}
 
 	else {
 
-		Node* temp = node;
-		Node* previousNode = node->getPreviousNode();
-		Node* nextNode = node->getNextNode();
+		Node* temp = head;
+		while (temp) {
+			if (temp->getData() == target) {
+				Node* previousNode = temp->getPreviousNode();
+				Node* nextNode = temp->getNextNode();
 
-		previousNode->setNextNode(nextNode);
-		nextNode->setPreviousNode(previousNode);
+				previousNode->setNextNode(nextNode);
+				nextNode->setPreviousNode(previousNode);
 
-		delete temp;
+				delete temp;
 
+				return;
+			}
+
+			temp = temp->getNextNode();
+		}
 	}
 }
 
 void LinkedList::printLinkedList() {
-	Node* temp = head;
+	Node* temp = this->head;
 
-	if (head == nullptr) {
-		std::cout << "The linked list is empty." << std::endl;
+	if (this->head == nullptr) {
+		cout << "The linked list is empty." << endl;
 		return;
 	}
 
 	while (temp != nullptr) {
-		std::cout << temp->getData() << std::endl;
+		cout << temp->getData() << endl;
 		temp = temp->getNextNode();
 	}
 
@@ -217,6 +228,12 @@ int main(int argc, const char* argv[]) {
 	list->insertNode("Coral");
 	list->insertNode("Zoo");
 	list->insertNode("Dino");
+
+	list->searchLinkedList("Zoo");
+
+	list->printLinkedList();
+
+	list->deleteNode("Zoo");
 
 	list->searchLinkedList("Zoo");
 
