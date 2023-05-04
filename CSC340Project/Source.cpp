@@ -63,7 +63,7 @@ public:
 	}
 
 	void add(T data) {
-		Node<T>* newNode = new Node(data);
+		Node<T>* newNode = new Node<T>(data);
 
 		if (head == nullptr) {
 			head = newNode;
@@ -81,23 +81,23 @@ public:
 	}
 
 	Node<T>* search(T data) {
-		Node<T>* temp = head;
+		Node<T>* temp = this->head;
 
-		if (head == nullptr) {
-			std::cout << "The list is empty. Nothing to search for" << std::endl;
+		if (this->head == nullptr) {
+			//std::cout << "The list is empty. Nothing to search for" << std::endl;
 			return nullptr;
 		}
 
-		while (temp != nullptr) {
+		while (temp) {
 			if (temp->getData() == data) {
-				std::cout << "Node was found!" << std::endl;
+				//std::cout << "Node was found!" << std::endl;
 				return temp;
 			}
 
 			temp = temp->getNextNode();
 		}
 
-		std::cout << "Node not found" << std::endl;
+		//std::cout << "Node not found" << std::endl;
 		return nullptr;
 	}
 
@@ -156,7 +156,59 @@ private:
 	Node<T>* tail;
 };
 
+void testSearch() {
+	//Testing the search Function
+	LinkedList<int>* intListTest = new LinkedList<int>();
+	if (intListTest->search(3)) {
+		std::cout << "UNEXPECTED OUTPUT" << std::endl;
+		std::cout << "Node was found" << std::endl;
+	}
+	else {
+		std::cout << "Expected OUTPUT" << std::endl;
+		std::cout << "Node not found" << std::endl;
+	}
 
+	intListTest->add(1);
+	if (intListTest->search(1)) {
+		std::cout << "Expected OUTPUT" << std::endl;
+		std::cout << "Node was found" << std::endl;
+	}
+	else {
+		std::cout << "Unexpected OUTPUT" << std::endl;
+		std::cout << "Node not found" << std::endl;
+	}
+
+	if (intListTest->search(2)) {
+		std::cout << "Unexpected OUTPUT" << std::endl;
+		std::cout << "Node was found" << std::endl;
+	}
+	else {
+		std::cout << "Expected OUTPUT" << std::endl;
+		std::cout << "Node not found" << std::endl;
+	}
+
+	intListTest->add(10);
+	intListTest->add(25);
+	intListTest->add(30);
+
+	if (intListTest->search(30)) {
+		std::cout << "Expected OUTPUT" << std::endl;
+		std::cout << "Node was found" << std::endl;
+	}
+	else {
+		std::cout << "Unexpected OUTPUT" << std::endl;
+		std::cout << "Node not found" << std::endl;
+	}
+
+	if (intListTest->search(10000)) {
+		std::cout << "Unexpected OUTPUT" << std::endl;
+		std::cout << "Node was found" << std::endl;
+	}
+	else {
+		std::cout << "Expected OUTPUT" << std::endl;
+		std::cout << "Node not found" << std::endl;
+	}
+}
 
 int main(int argc, const char* argv[]) {
 
@@ -176,6 +228,7 @@ int main(int argc, const char* argv[]) {
 	stringList->add("Team");
 	stringList->printLinkedList();
 
+	testSearch();
 
 
 	return 0;
