@@ -62,6 +62,40 @@ public:
 		this->tail = nullptr;
 	}
 
+	//insert
+    void insert (T data){
+        Node<T>* newNode = new Node <T>(data);
+        if(head == nullptr){
+            head = newNode;
+            tail = newNode;
+            return;
+        }
+        if (data =< head -> getData()) {
+            newNode -> setNextNode(head);
+            head -> setPreviousNode(newNode);
+            head = newNode;
+            return;
+        }
+        if(data >= tail -> getData ()){
+            newNode->setPreviousNode(tail);
+            tail->setNextNode(newNode);
+            tail = newNode;
+            return;
+        }
+        Node<T>* temp = head;
+        while (temp->getNextNode() != nullptr && temp->getNextNode()->getData() < data){
+            temp = temp -> getNextNode();
+            
+        }
+    
+        newNode->setNextNode(temp->getNextNode());
+        temp->setNextNode(newNode);
+        newNode->setPreviousNode(temp);
+        newNode->getNextNode()->setPreviousNode(newNode);
+    }
+
+	
+
 	void add(T data) {
 		Node<T>* newNode = new Node<T>(data);
 
@@ -209,6 +243,7 @@ void testSearch() {
 		std::cout << "Node not found" << std::endl;
 	}
 }
+
 
 int main(int argc, const char* argv[]) {
 
