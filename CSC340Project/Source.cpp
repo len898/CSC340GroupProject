@@ -85,7 +85,7 @@ public:
         Node<T>* temp = head;
         while (temp->getNextNode() != nullptr && temp->getNextNode()->getData() < data){
             temp = temp -> getNextNode();
-            i++;
+            
         }
     
         newNode->setNextNode(temp->getNextNode());
