@@ -70,45 +70,24 @@ public:
             tail = newNode;
             return;
         }
-        if (data < head -> getData())
-        {
+        if (data =< head -> getData()) {
             newNode -> setNextNode(head);
             head -> setPreviousNode(newNode);
             head = newNode;
             return;
         }
-        if(data > tail -> getData ()){
+        if(data >= tail -> getData ()){
             newNode->setPreviousNode(tail);
             tail->setNextNode(newNode);
             tail = newNode;
             return;
         }
-		
-        /*
-        if(data == 0){
-            newNode -> setNextNode(head);
-            head = newNode;
-            return;
-        }
-        */
-
-        int i;
         Node<T>* temp = head;
         while (temp->getNextNode() != nullptr && temp->getNextNode()->getData() < data){
             temp = temp -> getNextNode();
             i++;
         }
-
-        /*
-        int i = 0;
-        for (int i = 0; i < data; i++){
-            temp = temp -> getNextNode();
-            if (temp == nullptr);{
-                std::cout << "Index out of range" << std::endl;
-                return;
-
-            }
-        */
+    
         newNode->setNextNode(temp->getNextNode());
         temp->setNextNode(newNode);
         newNode->setPreviousNode(temp);
@@ -264,6 +243,7 @@ void testSearch() {
 		std::cout << "Node not found" << std::endl;
 	}
 }
+
 
 int main(int argc, const char* argv[]) {
 
