@@ -4,6 +4,7 @@
 template<typename T>
 class Node {
 public:
+	// constructors
 	Node() {
 		this->data = "";
 		this->next = nullptr;
@@ -15,6 +16,12 @@ public:
 		this->prev = nullptr;
 	}
 
+	// deconstructor
+	~Node() {
+		next = nullptr;
+		prev = nullptr;
+	}
+
 	// getters
 	T getData() {
 		return this->data;
@@ -24,7 +31,7 @@ public:
 		return this->next;
 	}
 
-	Node* getPreviousNode() {
+	Node* getPrevNode() {
 		return this->prev;
 	}
 
@@ -37,7 +44,7 @@ public:
 		this->next = next;
 	}
 
-	void setPreviousNode(Node* prev) {
+	void setPrevNode(Node* prev) {
 		this->prev = prev;
 	}
 
@@ -57,27 +64,41 @@ private:
 template<typename T>
 class LinkedList {
 public:
+	// constructor
 	LinkedList() {
 		this->head = nullptr;
 		this->tail = nullptr;
 	}
 
-	//insert
+	// deconstructor
+	~LinkedList() {
+		clear();
+	}
+
+	void clear() {
+		Node<T>* nodeToDelete = head;
+		while (head != nullptr) {
+			head = head->getNextNode();
+			delete nodeToDelete;
+			nodeToDelete = head;
+		}
+	}
+
     void insert (T data){
-        Node<T>* newNode = new Node <T>(data);
+        Node<T>* newNode = new Node<T>(data);
         if(head == nullptr){
             head = newNode;
             tail = newNode;
             return;
         }
-        if (data =< head -> getData()) {
+        if (data <= head->getData()) {
             newNode -> setNextNode(head);
-            head -> setPreviousNode(newNode);
+            head -> setPrevNode(newNode);
             head = newNode;
             return;
         }
-        if(data >= tail -> getData ()){
-            newNode->setPreviousNode(tail);
+        if(data >= tail->getData()){
+            newNode->setPrevNode(tail);
             tail->setNextNode(newNode);
             tail = newNode;
             return;
@@ -90,8 +111,8 @@ public:
     
         newNode->setNextNode(temp->getNextNode());
         temp->setNextNode(newNode);
-        newNode->setPreviousNode(temp);
-        newNode->getNextNode()->setPreviousNode(newNode);
+        newNode->setPrevNode(temp);
+        newNode->getNextNode()->setPrevNode(newNode);
     }
 
 	
@@ -102,80 +123,51 @@ public:
 		if (head == nullptr) {
 			head = newNode;
 			tail = newNode;
-			return;
+		} else {
+			tail->setNextNode(newNode);
+			newNode->setPrevNode(tail);
+			tail = newNode;
 		}
+	}
 
-		Node<T>* temp = head;
-		while (temp->getNextNode() != nullptr) {
-			temp = temp->getNextNode();
+	void remove(T data) {
+		Node<T>* nodeToDelete = head;
+		while (nodeToDelete != nullptr) {
+			if (nodeToDelete->getData() == data) {
+				if (nodeToDelete == head) {
+					head = head->getNextNode();
+					head->setPrevNodeNull();
+				} else if (nodeToDelete == tail) {
+					tail = tail->getPrevNode();
+					tail->setNextNodeNull();
+				} else {
+					Node<T>* prevNode = nodeToDelete->getPrevNode();
+					Node<T>* nextNode = nodeToDelete->getNextNode();
+					prevNode->setNextNode(nextNode);
+					nextNode->setPrevNode(prevNode);
+				}
+				delete nodeToDelete;
+			}
+			nodeToDelete = nodeToDelete->getNextNode();
 		}
-		temp->setNextNode(newNode);
-		newNode->setPreviousNode(temp);
-		tail = newNode;
 	}
 
 	Node<T>* search(T data) {
-		Node<T>* temp = this->head;
-
-		if (this->head == nullptr) {
-			//std::cout << "The list is empty. Nothing to search for" << std::endl;
-			return nullptr;
-		}
+		Node<T>* temp = head;
 
 		while (temp) {
 			if (temp->getData() == data) {
-				//std::cout << "Node was found!" << std::endl;
 				return temp;
 			}
 
 			temp = temp->getNextNode();
 		}
 
-		//std::cout << "Node not found" << std::endl;
 		return nullptr;
 	}
 
-	//    void remove(T data) {
-	//
-	//        if (head->getData() == data) {
-	//            Node<T>* tempHead = head;
-	//
-	//            head = head->getNextNode();
-	//            head->setPrevNodeNull();
-	//
-	//            delete tempHead;
-	//        }
-	//
-	//       else if (tail->getData() == data) {
-	//            Node<T>* tempTail = tail;
-	//
-	//            tail = tail->getPreviousNode();
-	//            tail->setNextNodeNull();
-	//
-	//            delete tempTail;
-	//        }
-	//
-	//       else {
-	//
-	//           Node<T>* temp = node;
-	//           Node<T>* previousNode = node->getPreviousNode();
-	//           Node<T>* nextNode = node->getNextNode();
-	//
-	//           previousNode->setNextNode(nextNode);
-	//           nextNode->setPreviousNode(previousNode);
-	//
-	//           delete temp;
-	//
-	//       }
-	//    }
-
-	void printLinkedList() {
+	void print() {
 		Node<T>* temp = head;
-
-		if (head == nullptr) {
-			std::cout << "The linked list is empty." << std::endl;
-			return;
-		}
 
 		while (temp != nullptr) {
 			std::cout << temp->getData() << " ";
@@ -244,7 +236,6 @@ void testSearch() {
 	}
 }
 
-
 int main(int argc, const char* argv[]) {
 
 	LinkedList<int>* list = new LinkedList<int>();
@@ -257,14 +248,13 @@ int main(int argc, const char* argv[]) {
 	list->add(5);
 	list->add(5);
 
-	list->printLinkedList();
+	list->print();
 
 	stringList->add("Hello");
 	stringList->add("Team");
-	stringList->printLinkedList();
+	stringList->print();
 
 	testSearch();
-
 
 	return 0;
 }
