@@ -171,17 +171,15 @@ public:
 	}
 
 	std::string print() {
-		Node<T>* temp = head;
+		Node<T>* temp = this->head;
 		std::string output = "";
 
 		while (temp != nullptr) {
 			auto val = temp->getData();
-			output += std::to_string(val);
+			output += std::to_string(val) + " ";
 			std::cout << temp->getData() << " ";
 			temp = temp->getNextNode();
 		}
-
-		//std::cout << std::endl;
 		return output;
 	}
 
@@ -277,7 +275,38 @@ bool callingListEmptyMerge() {
 	list2.add(25);
 	list1.mergeLists(&list2);
 	std::string expect_output = "25 ";
-	bool returnVal = list1.print() == expect_output;
+	std::string output = list1.print();
+	//std::cout << "Output: " << output << std::endl;
+	bool returnVal = output == expect_output;
+	return returnVal;
+}
+
+bool paramterListEmptyMerge() {
+	LinkedList<int> list1 = LinkedList<int>();
+	LinkedList<int> list2 = LinkedList<int>();
+	list1.add(25);
+	list1.mergeLists(&list2);
+	std::string expect_output = "25 ";
+	std::string output = list1.print();
+	//std::cout << "Output: " << output << std::endl;
+	bool returnVal = output == expect_output;
+	return returnVal;
+}
+
+bool twoNonEmptyMerge() {
+	LinkedList<int> list1 = LinkedList<int>();
+	LinkedList<int> list2 = LinkedList<int>();
+	list1.add(25);
+	list1.add(35);
+	list1.add(45);
+	list2.add(10);
+	list2.add(65);
+	list2.add(90);
+	list1.mergeLists(&list2);
+	std::string expect_output = "10 25 35 45 65 90 ";
+	std::string output = list1.print();
+	//std::cout << "Output: " << output << std::endl;
+	bool returnVal = output == expect_output;
 	return returnVal;
 }
 
@@ -298,6 +327,24 @@ void testMerge() {
 	else {
 		std::cout << "Unexpected Output" << std::endl;
 		std::cout << "Calling List Empty Merge Not Functional" << std::endl;
+	}
+
+	if (paramterListEmptyMerge()) {
+		std::cout << "Expected Output" << std::endl;
+		std::cout << "Parameter List Empty Merge Functional" << std::endl;
+	}
+	else {
+		std::cout << "Unexpected Output" << std::endl;
+		std::cout << "Parameter List Empty Merge Not Functional" << std::endl;
+	}
+
+	if (twoNonEmptyMerge()) {
+		std::cout << "Expected Output" << std::endl;
+		std::cout << "Two Non Empty List Empty Merge Functional" << std::endl;
+	}
+	else {
+		std::cout << "Unexpected Output" << std::endl;
+		std::cout << "Two Non Empty List Empty Merge Not Functional" << std::endl;
 	}
 }
 
