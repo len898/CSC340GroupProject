@@ -138,31 +138,6 @@ public:
 		}
 	}
 
-	void testBubbleSort() {
-		LinkedList <int>* list = new LinkedList <int>();
-
-		//pi 
-		list -> add (3);
-		list -> add (1);
-		list -> add (4);
-		list -> add (1);
-		list -> add (5);
-		list -> add (9);
-		list -> add (2);
-		list -> add (6);
-		list -> add (5);
-		list -> add (3);
-
-		std:: cout << "Before sorting: ";
-		list -> printLinkedList();
-
-		//bubble sort applied
-		list -> bubbleSort();
-
-		std:: cout << "After sorting: ";
-		list -> printLinkedList();
-	}
-	
 
 	void add(T data) {
 		Node<T>* newNode = new Node<T>(data);
@@ -310,7 +285,49 @@ void testSearch() {
 		std::cout << "Expected OUTPUT" << std::endl;
 		std::cout << "Node not found" << std::endl;
 	}
+	
 }
+void testInsert(){
+		LinkedList <int>* list = new LinkedList <int>();
+
+			list -> insert(2);
+			list -> insert(8);
+			list -> insert(6);
+			list -> insert(8);
+			list -> insert(1);
+			list -> insert(0);
+
+			std:: cout << "After insert: ";
+			list -> printLinkedList();
+
+		
+	}
+
+
+	void testBubbleSort() {
+		LinkedList <int>* list = new LinkedList <int>();
+
+		//pi 
+		list -> add (3);
+		list -> add (1);
+		list -> add (4);
+		list -> add (1);
+		list -> add (5);
+		list -> add (9);
+		list -> add (2);
+		list -> add (6);
+		list -> add (5);
+		list -> add (3);
+
+		std:: cout << "Before sorting: ";
+		list -> printLinkedList();
+
+		//bubble sort applied
+		list -> bubbleSort();
+
+		std:: cout << "After sorting: ";
+		list -> printLinkedList();
+	}
 
 
 int main(int argc, const char* argv[]) {
@@ -335,11 +352,11 @@ int main(int argc, const char* argv[]) {
 
 	// test case for bubble sort
 	std:: cout << "\n";
-	list -> testBubbleSort();
+	testBubbleSort();
 
 	// test case for insert 
 	std:: cout << "\n";
-	list -> testInsert();
+	testInsert();
 	std:: cout << "\n";
 
 
