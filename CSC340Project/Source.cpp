@@ -70,7 +70,7 @@ public:
             tail = newNode;
             return;
         }
-        if (data =< head -> getData()) {
+        if (data <= head -> getData()) {
             newNode -> setNextNode(head);
             head -> setPreviousNode(newNode);
             head = newNode;
@@ -94,6 +94,74 @@ public:
         newNode->getNextNode()->setPreviousNode(newNode);
     }
 
+	void testInsert(){
+		LinkedList <int>* list = new LinkedList <int>();
+
+			list -> insert(2);
+			list -> insert(8);
+			list -> insert(6);
+			list -> insert(8);
+			list -> insert(1);
+			list -> insert(0);
+
+			std:: cout << "After insert: ";
+			list -> printLinkedList();
+
+		
+	}
+
+	void bubbleSort(){
+		if (head == nullptr || head -> getNextNode() == nullptr)
+		return; 
+		//if empty dont sort 
+
+		bool swap;
+		Node <T>* current1 = head;
+		Node <T>* current2;
+		
+		while (current1 -> getNextNode() != nullptr){
+			current2 = head;
+
+			while (current2 -> getNextNode() != nullptr){
+				if (current2 -> getData() > current2 -> getNextNode() -> getData()){
+					//swap nodes
+					T temp = current2 -> getData();
+					current2 -> setData((current2 -> getNextNode()) -> getData());
+					current2 -> getNextNode() -> setData(temp);
+					swap = true;
+
+			}
+			current2 = current2 -> getNextNode();
+		}
+		current1 = current1 -> getNextNode();
+		
+		}
+	}
+
+	void testBubbleSort() {
+		LinkedList <int>* list = new LinkedList <int>();
+
+		//pi 
+		list -> add (3);
+		list -> add (1);
+		list -> add (4);
+		list -> add (1);
+		list -> add (5);
+		list -> add (9);
+		list -> add (2);
+		list -> add (6);
+		list -> add (5);
+		list -> add (3);
+
+		std:: cout << "Before sorting: ";
+		list -> printLinkedList();
+
+		//bubble sort applied
+		list -> bubbleSort();
+
+		std:: cout << "After sorting: ";
+		list -> printLinkedList();
+	}
 	
 
 	void add(T data) {
@@ -264,6 +332,15 @@ int main(int argc, const char* argv[]) {
 	stringList->printLinkedList();
 
 	testSearch();
+
+	// test case for bubble sort
+	std:: cout << "\n";
+	list -> testBubbleSort();
+
+	// test case for insert 
+	std:: cout << "\n";
+	list -> testInsert();
+	std:: cout << "\n";
 
 
 	return 0;
