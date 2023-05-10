@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <typeinfo>
+#include <sstream>
 
 template<typename T>
 class Node {
@@ -133,26 +135,21 @@ public:
 	}
 
 	void remove(T data) {
-		Node<T>* nodeToDelete = head;
-		while (nodeToDelete != nullptr) {
-			if (nodeToDelete->getData() == data) {
-				if (nodeToDelete == head) {
-					head = head->getNextNode();
-					head->setPrevNodeNull();
-				}
-				else if (nodeToDelete == tail) {
-					tail = tail->getPrevNode();
-					tail->setNextNodeNull();
-				}
-				else {
-					Node<T>* prevNode = nodeToDelete->getPrevNode();
-					Node<T>* nextNode = nodeToDelete->getNextNode();
-					prevNode->setNextNode(nextNode);
-					nextNode->setPrevNode(prevNode);
-				}
-				delete nodeToDelete;
+		Node<T>* nodeToDelete = search(data);
+		if (nodeToDelete != nullptr) {
+			if (nodeToDelete == head) {
+				head = head->getNextNode();
+				head->setPrevNodeNull();
+			} else if (nodeToDelete == tail) {
+				tail = tail->getPrevNode();
+				tail->setNextNodeNull();
+			} else {
+				Node<T>* prevNode = nodeToDelete->getPrevNode();
+				Node<T>* nextNode = nodeToDelete->getNextNode();
+				prevNode->setNextNode(nextNode);
+				nextNode->setPrevNode(prevNode);
 			}
-			nodeToDelete = nodeToDelete->getNextNode();
+			delete nodeToDelete;
 		}
 	}
 
@@ -170,17 +167,105 @@ public:
 		return nullptr;
 	}
 
-	std::string print() {
+	std::string toString() {
+		std::string stringType = "NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE";
+
 		Node<T>* temp = this->head;
 		std::string output = "";
 
 		while (temp != nullptr) {
-			auto val = temp->getData();
-			output += std::to_string(val) + " ";
-			std::cout << temp->getData() << " ";
+			T val = temp->getData();
+			std::string quote = (typeid(T).name() == stringType) ? "\"" : "";
+			output += quote + to_string(val) + quote;
 			temp = temp->getNextNode();
+			if (temp != nullptr) {
+				output += ", ";
+			}
 		}
-		return output;
+		return "{"  + output + "}";
+	}
+
+	void mergeSort() {
+		if (head == nullptr || head->getNextNode() == nullptr) {
+			return;
+		}
+
+		Node<T>* subHead1 = head;
+		Node<T>* subHead2 = head;
+
+		int size = 0;
+		while (subHead1 != nullptr) {
+			subHead1 = subHead1->getNextNode();
+			if (++size % 2 == 0) {
+				subHead2 = subHead2->getNextNode();
+			}
+		}
+
+		subHead1 = head;
+
+		subHead2->getPrevNode()->setNextNodeNull();
+		subHead2->setPrevNodeNull();
+
+		head = subHead1;
+		mergeSort();
+		subHead1 = head;
+
+		head = subHead2;
+		mergeSort();
+		subHead2 = head;
+
+		head = nullptr;
+		Node<T>* nodeptr = nullptr;
+
+		while (subHead1 != nullptr && subHead2 != nullptr) {
+			if (subHead1->getData() < subHead2->getData()) {
+				if (head == nullptr) {
+					head = subHead1;
+					nodeptr = subHead1;
+				} else {
+					nodeptr->setNextNode(subHead1);
+					subHead1->setPrevNode(nodeptr);
+					nodeptr = subHead1;
+				}
+				subHead1 = subHead1->getNextNode();
+			} else {
+				if (head == nullptr) {
+					head = subHead2;
+					nodeptr = subHead2;
+				} else {
+					nodeptr->setNextNode(subHead2);
+					subHead1->setPrevNode(nodeptr);
+					nodeptr = subHead2;
+				}
+				subHead2 = subHead2->getNextNode();
+			}
+		}
+
+		while (subHead1 != nullptr) {
+			if (head == nullptr) {
+				head = subHead1;
+				nodeptr = subHead1;
+			} else {
+				nodeptr->setNextNode(subHead1);
+				subHead1->setPrevNode(nodeptr);
+				nodeptr = subHead1;
+			}
+			subHead1 = subHead1->getNextNode();
+		}
+
+		while (subHead2 != nullptr) {
+			if (head == nullptr) {
+				head = subHead2;
+				nodeptr = subHead2;
+			} else {
+				nodeptr->setNextNode(subHead2);
+				subHead2->setPrevNode(nodeptr);
+				nodeptr = subHead2;
+			}
+			subHead2 = subHead2->getNextNode();
+		}
+
+		tail = nodeptr;
 	}
 
 	//Modified the list from which it was called
@@ -205,7 +290,41 @@ public:
 private:
 	Node<T>* head;
 	Node<T>* tail;
+
+	std::string to_string(const T& obj) {
+	  std::ostringstream oss {};
+	  oss << obj;
+	  return oss.str();
+	}
 };
+
+void testAddRemove() {
+	unsigned int i;
+	LinkedList<int>* intList = new LinkedList<int>();
+	LinkedList<std::string>* stringList = new LinkedList<std::string>();
+	
+	for (i = 1; i <= 20; i++) {
+		intList->add(i);
+		stringList->add("Number " + std::to_string(i));
+	}
+
+	std::cout << "Added: ";
+	std::cout << intList->toString() << std::endl;
+
+	std::cout << "Added: ";
+	std::cout << stringList->toString() << std::endl;
+
+	for (i = 1; i <= 20; i += 2) {
+		intList->remove(i);
+		stringList->remove("Number " + std::to_string(i));
+	}
+
+	std::cout << "Removed: ";
+	std::cout << intList->toString() << std::endl;
+
+	std::cout << "Removed: ";
+	std::cout << stringList->toString() << std::endl;
+}
 
 void testSearch() {
 	//Testing the search Function
@@ -265,7 +384,7 @@ bool emptyMerge() {
 	LinkedList<int> list1 = LinkedList<int>();
 	LinkedList<int> list2 = LinkedList<int>();
 	list1.mergeLists(&list2);
-	bool returnVal = list1.print() == "";
+	bool returnVal = list1.toString() == "";
 	return returnVal;
 }
 
@@ -275,8 +394,8 @@ bool callingListEmptyMerge() {
 	list2.add(25);
 	list1.mergeLists(&list2);
 	std::string expect_output = "25 ";
-	std::string output = list1.print();
-	//std::cout << "Output: " << output << std::endl;
+	std::string output = list1.toString();
+	std::cout << "Output: " << output << std::endl;
 	bool returnVal = output == expect_output;
 	return returnVal;
 }
@@ -287,8 +406,8 @@ bool paramterListEmptyMerge() {
 	list1.add(25);
 	list1.mergeLists(&list2);
 	std::string expect_output = "25 ";
-	std::string output = list1.print();
-	//std::cout << "Output: " << output << std::endl;
+	std::string output = list1.toString();
+	std::cout << "Output: " << output << std::endl;
 	bool returnVal = output == expect_output;
 	return returnVal;
 }
@@ -304,8 +423,8 @@ bool twoNonEmptyMerge() {
 	list2.add(90);
 	list1.mergeLists(&list2);
 	std::string expect_output = "10 25 35 45 65 90 ";
-	std::string output = list1.print();
-	//std::cout << "Output: " << output << std::endl;
+	std::string output = list1.toString();
+	std::cout << "Output: " << output << std::endl;
 	bool returnVal = output == expect_output;
 	return returnVal;
 }
@@ -348,26 +467,57 @@ void testMerge() {
 	}
 }
 
-int main(int argc, const char* argv[]) {
+void testMergeSort() {
+	auto arrayToLinkedList = [](auto items[], LinkedList<auto>* list) {
+		for (unsigned int i = 0; i < 26; ++i) {
+			list->add(items[i]);
+		}
+	};
 
-	/*LinkedList<int>* list = new LinkedList<int>();
+	auto mergeSort = [](LinkedList<auto>* list) {
+		std::cout << "Before Merge Sort: ";
+		std::cout << list->toString() << std::endl;
+
+		list->mergeSort();
+
+		std::cout << "After Merge Sort: ";
+		std::cout << list->toString() << std::endl;
+	};
+
+	std::string stringItems[26] = {
+		"Quebec", "Victor", "November", "Mike", "Charlie", "X-Ray",
+		"Zulu", "Yankee", "Juliett", "Uniform", "Oscar", "Lima", "Romeo",
+		"Bravo", "Tango", "Kilo", "Foxtrot", "India", "Delta", "Sierra",
+		"Golf", "Alpha", "Papa", "Echo", "Hotel", "Whiskey"
+	};
 	LinkedList<std::string>* stringList = new LinkedList<std::string>();
 
-	list->add(3);
-	list->add(4);
-	list->add(5);
-	list->add(5);
-	list->add(5);
-	list->add(5);
+	int intItems[26] = {23, 1, 21, 5, 4, 17, 15, 13, 3, 2, 12, 19, 6, 10, 20, 26, 18, 9, 25, 24, 16, 14, 11, 22, 8, 7};
+	LinkedList<int>* intList = new LinkedList<int>();
+	
+	arrayToLinkedList(stringItems, stringList);
+	arrayToLinkedList(intItems, intList);
 
-	list->print();
+	mergeSort(stringList);
+	std::cout << std::endl;
+	mergeSort(intList);
+}
 
-	stringList->add("Hello");
-	stringList->add("Team");
-	stringList->print();*/
+int main(int argc, const char* argv[]) {
+	std::cout << " -- Add and Remove Node Test" << std::endl;
+	testAddRemove();
+	std::cout << std::endl;
 
-	//testSearch();
+	std::cout << " -- Search For Node Test -- " << std::endl;
+	testSearch();
+	std::cout << std::endl;
+
+	std::cout << " -- Merge LinkedLists Test -- " << std::endl;
 	testMerge();
+	std::cout << std::endl;
+
+	std::cout << " -- Merge Sort Test -- " << std::endl;
+	testMergeSort();
 
 	return 0;
 }
