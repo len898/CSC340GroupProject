@@ -111,11 +111,13 @@ public:
 			temp = temp->getNextNode();
 
 		}
-
-		newNode->setNextNode(temp->getNextNode());
-		temp->setNextNode(newNode);
-		newNode->setPrevNode(temp);
-		newNode->getNextNode()->setPrevNode(newNode);
+		tail->setNextNode(newNode);
+		newNode->setPrevNode(tail);
+		tail = newNode;
+		//newNode->setNextNode(temp->getNextNode());
+		//temp->setNextNode(newNode);
+		//newNode->setPrevNode(temp);
+		//newNode->getNextNode()->setPrevNode(newNode);
 	}
 
 
@@ -292,7 +294,38 @@ public:
 		}
 	}
 
-	//Append function possible
+	void bubbleSort() {
+		if (head == nullptr || head->getNextNode() == nullptr)
+			return;
+		// do not sort if empty or one 
+
+		bool swap;
+		Node <T>* current = head;
+		Node <T>* tail = nullptr;
+
+		while (current != tail) {
+			swap = false;
+			Node <T>* current2 = head;
+
+			while (current2->getNextNode() != tail) {
+				if (current2->getData() > current2->getNextNode()->getData()) {
+					T temp = current2->getData();
+					current2->setData(current2->getNextNode()->getData());
+					current2->getNextNode()->setData(temp);
+					swap = true;
+				}
+				current2 = current2->getNextNode();
+
+			}
+			tail = current2; // update tail to last swap
+			if (!swap)
+				break; // if no swap the list is already sorted
+
+		}
+
+
+	}
+
 
 private:
 	Node<T>* head;
@@ -524,6 +557,55 @@ void testMergeSort() {
 	mergeSortString(stringList);
 	std::cout << std::endl;
 	mergeSortInt(intList);
+}
+
+void testInsert() {
+	LinkedList<int> intList;
+	LinkedList <std::string> stringList;
+
+	//pi
+	intList.insert(3);
+	intList.insert(1);
+	intList.insert(4);
+	intList.insert(1);
+	intList.insert(5);
+	intList.insert(9);
+
+	std::cout << "Inserted: " << intList.toString() << std::endl;
+
+	stringList.insert("one");
+	stringList.insert("two");
+	stringList.insert("three");
+
+	std::cout << "inserted: " << stringList.toString() << std::endl;
+}
+
+
+void testBubbleSort() {
+	LinkedList<int> intList;
+	LinkedList< std::string> stringList;
+
+	intList.insert(3);
+	intList.insert(1);
+	intList.insert(4);
+	intList.insert(1);
+	intList.insert(5);
+	intList.insert(9);
+	intList.insert(2);
+
+	std::cout << "before sorting: " << intList.toString() << std::endl;
+	intList.bubbleSort();
+	std::cout << "after sorting: " << intList.toString() << std::endl;
+
+	stringList.add("zzz");
+	stringList.add("bbb");
+	stringList.add("eee");
+	stringList.add("ddd");
+
+	std::cout << "before sorting: " << stringList.toString() << std::endl;
+	stringList.bubbleSort();
+	std::cout << "after sorting: " << stringList.toString() << std::endl;
+
 }
 
 int main(int argc, const char* argv[]) {
