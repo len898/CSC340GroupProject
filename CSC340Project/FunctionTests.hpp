@@ -17,6 +17,7 @@ bool twoNonEmptyMerge();
 void testMerge();
 void testMergeSort();
 void testAddFromFile();
+void testBubbleSort();
 
 void testAddRemove() {
     unsigned int i;
@@ -283,6 +284,33 @@ std::string read_file() {
     file.close();
 
     return data;
+}
+
+void testBubbleSort() {
+    LinkedList<int> intList;
+    LinkedList< std::string> stringList;
+
+    intList.insert(3);
+    intList.insert(1);
+    intList.insert(4);
+    intList.insert(1);
+    intList.insert(5);
+    intList.insert(9);
+    intList.insert(2);
+
+    std::cout << "before sorting: " << intList.toString() << std::endl;
+    intList.bubbleSort();
+    std::cout << "after sorting: " << intList.toString() << std::endl;
+
+    stringList.add("zzz");
+    stringList.add("bbb");
+    stringList.add("eee");
+    stringList.add("ddd");
+
+    std::cout << "before sorting: " << stringList.toString() << std::endl;
+    stringList.bubbleSort();
+    std::cout << "after sorting: " << stringList.toString() << std::endl;
+
 }
 
 #endif /* FunctionTests_hpp */
