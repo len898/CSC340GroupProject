@@ -23,17 +23,22 @@ int main(int argc, const char* argv[]) {
     testAddFromFile();
     std::cout << std::endl;
     
-    LinkedList<int>* list = new LinkedList<int>;
-    list->add(1);
-    list->add(2);
-    list->add(3);
-    list->add(4);
-    list->add(5);
+    std::cout << " -- Bubble Sort Test -- " << std::endl;
+    testBubbleSort();
+    std::cout << std::endl;
     
+    LinkedList<int>* list = new LinkedList<int>;
+    list->add(3);
+    list->add(2);
+    list->add(35);
+    list->add(52);
+    list->add(5);
     list->print();
     
     list->addFromFile("dict.txt", list);
+    list->print();
     
+    list->bubbleSort();
     list->print();
     
 

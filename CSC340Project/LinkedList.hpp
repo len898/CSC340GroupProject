@@ -25,6 +25,7 @@ public:
     Node<T>* search(T data);
     std::string toString();
     void mergeSort();
+    void bubbleSort();
     void addFromFile(std::string fileName, LinkedList<T>* list);
     void mergeLists(const LinkedList<T>* listTwo);
     void print();
@@ -41,3 +42,4 @@ private:
 };
 #include "LinkedList.cpp"
 #endif /* LinkedList_hpp */
+

@@ -1,4 +1,3 @@
-//
 //  LinkedList.cpp
 //  CSC340GP
 //
@@ -56,11 +55,14 @@ void LinkedList<T>::insert(T data) {
         temp = temp->getNextNode();
 
     }
-
-    newNode->setNextNode(temp->getNextNode());
-    temp->setNextNode(newNode);
-    newNode->setPrevNode(temp);
-    newNode->getNextNode()->setPrevNode(newNode);
+    
+    tail->setNextNode(newNode);
+    newNode->setPrevNode(tail);
+    tail = newNode;
+//    newNode->setNextNode(temp->getNextNode());
+//    temp->setNextNode(newNode);
+//    newNode->setPrevNode(temp);
+//    newNode->getNextNode()->setPrevNode(newNode);
 }
 
 template<class T>
@@ -222,6 +224,39 @@ void LinkedList<T>::mergeSort() {
 
     tail = nodeptr;
 }
+
+template<class T>
+void LinkedList<T>::bubbleSort() {
+        if (head == nullptr || head->getNextNode() == nullptr)
+            return;
+        // do not sort if empty or one
+
+        bool swap;
+        Node <T>* current = head;
+        Node <T>* tail = nullptr;
+
+        while (current != tail) {
+            swap = false;
+            Node <T>* current2 = head;
+
+            while (current2->getNextNode() != tail) {
+                if (current2->getData() > current2->getNextNode()->getData()) {
+                    T temp = current2->getData();
+                    current2->setData(current2->getNextNode()->getData());
+                    current2->getNextNode()->setData(temp);
+                    swap = true;
+                }
+                current2 = current2->getNextNode();
+
+            }
+            tail = current2; // update tail to last swap
+            if (!swap)
+                break; // if no swap the list is already sorted
+
+        }
+
+
+    }
 
 template<class T>
 void LinkedList<T>::addFromFile (std::string fileName, LinkedList<T>* list) {
