@@ -461,6 +461,7 @@ public:
 	 */
 	void print() {
 		std::cout << toString() << std::endl;
+		
 	}
 
 
@@ -841,8 +842,82 @@ void testLinkedList() {
 }
 
 
+class Vault
+{
+public:
+	Vault() {
+		this->balance = 0;
+	}
+	Vault(int startBal) {
+		this->balance = startBal;
+	}
+	~Vault() {}
+	bool operator==(const Vault& r) {
+		return this->balance == r.balance;
+	}
+
+	bool operator!=(const Vault& r) {
+		return this->balance != r.balance;
+	}
+
+	bool operator<(const Vault& r) {
+		return this->balance < r.balance;
+	}
+
+	bool operator>(const Vault& r) {
+		return this->balance > r.balance;
+	}
+
+	bool operator<=(const Vault& r) {
+		return this->balance <= r.balance;
+	}
+
+	bool operator>=(const Vault& r) {
+		return this->balance >= r.balance;
+	}
+
+	
+
+
+
+private:
+	friend std::ostream& operator<<(std::ostream& os, const Vault& v) {
+		os << v.balance;
+		return os;
+	}
+	int balance;
+};
+
+//std::ostream& operator<<(std::ostream& os, const Vault& v) {
+//	
+//}
+
+void demo() {
+	
+	
+	
+	
+
+	Vault vault1 = Vault(10);
+	Vault vault2 = Vault();
+	Vault vault3 = Vault(30);
+	Vault vault4 = Vault();
+	
+	LinkedList<Vault> BankSystem = LinkedList<Vault>();
+	BankSystem.add(vault1);
+	BankSystem.add(vault2);
+	BankSystem.add(vault3);
+	BankSystem.add(vault4);
+
+	BankSystem.print();
+	BankSystem.mergeSort();
+	BankSystem.print();
+}
+
+
 int main(int argc, const char* argv[]) {
 	
-	testLinkedList();
+	//testLinkedList();
+	demo();
 	return 0;
 }
