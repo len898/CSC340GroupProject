@@ -85,6 +85,22 @@ public:
 		this->prev = nullptr;
 	}
 
+	/**
+	 * Finds the midpoint between two node.
+	 * Used to assist the binary search
+	 * Can also be used to just find the middle
+	 */
+	Node<T>* findMid(Node<T>* end) {
+		Node* slow = this;
+		Node* fast = this;
+		while (fast != end && fast->getNextNode() != end) {
+			slow = slow->getNextNode();
+			fast = fast->getNextNode()->getNextNode();
+		}
+		fast = nullptr;
+		return slow;
+	}
+
 private:
 	T data;
 	Node<T>* next;
@@ -379,6 +395,42 @@ public:
 		}
 
 		tail = nodeptr;
+	}
+
+	/**
+	 * Searches for a value using binary search.
+	 * Requires the list to be sorted to work
+	 */
+	Node<T>* binarySearch(T target) {
+		Node<T>* searchHead = this->head;
+		Node<T>* searchTail = this->tail;
+		Node<T>* searchMid = this->head->findMid(searchTail);
+
+		if (searchHead) {
+			while (searchHead->getData() < searchTail->getData() && searchHead->getNextNode() != searchTail->getPrevNode()) {
+				if (target == searchHead->getData()) {
+					return searchHead;
+				}
+				else if (target == searchMid->getData()) {
+					return searchMid;
+				}
+				else if (target == searchTail->getData()) {
+					return searchTail;
+				}
+
+				if (target < searchMid->getData()) {
+					searchHead = searchHead->getNextNode();
+					searchTail = searchMid->getPrevNode();
+					searchMid = searchHead->findMid(searchTail);
+				}
+				else if (target < searchMid->getData()) {
+					searchHead = searchMid->getNextNode();
+					searchTail = searchTail->getPrevNode();
+					searchMid = searchHead->findMid(searchTail);
+				}
+			}
+		}
+		return nullptr;
 	}
 
 	/**
@@ -729,12 +781,52 @@ void testBubbleSort(){
 
 }
 
+/**
+ * A function that tests the binary search algorithm.
+ */
+void testBinarySearch() {
+	LinkedList<int>* listForSearch = new LinkedList<int>();
 
+	Node<int>* result = listForSearch->binarySearch(2);
+	if (result) {
+		std::cout << "Unexpected Ouput, Empty List Binary Search int" << std::endl;
+	}
+	else {
+		std::cout << "Expected Output, Empty Binary Search int" << std::endl;
+	}
+
+	listForSearch->add(2);
+	result = listForSearch->binarySearch(2);
+	if (result) {
+		std::cout << "Expected Ouput, One Item List Binary Search int" << std::endl;
+	}
+	else {
+		std::cout << "Expected Output, One Item Binary Search int" << std::endl;
+	}
+
+	listForSearch->insert(1);
+	result = listForSearch->binarySearch(1);
+	if (result) {
+		std::cout << "Expected Ouput, Two Item List Binary Search int, First Val" << std::endl;
+	}
+	else {
+		std::cout << "Expected Output, Two Item Binary Search int, First Val" << std::endl;
+	}
+
+	listForSearch->insert(10);
+	result = listForSearch->binarySearch(10);
+	if (result) {
+		std::cout << "Expected Ouput, Three Item List Binary Search int, Last Val" << std::endl;
+	}
+	else {
+		std::cout << "Expected Output, Three Item Binary Search int, Last Val" << std::endl;
+	}
+}
 
 /**
  * A function that runs all the tests.
  */
-int main(int argc, const char* argv[]) {
+void testLinkedList() {
 	std::cout << " -- Add and Remove Node Test -- " << std::endl;
 	testAddRemove();
 	std::cout << std::endl;
@@ -759,7 +851,16 @@ int main(int argc, const char* argv[]) {
 
 	std::cout << " -- Merge Sort Test -- " << std::endl;
 	testMergeSort();
-	std:: cout << std::endl;
+	std::cout << std::endl;
 
+	std::cout << "-- Binary Search Test --" << std::endl;
+	testBinarySearch();
+	std::cout << std::endl;
+}
+
+
+int main(int argc, const char* argv[]) {
+	
+	testLinkedList();
 	return 0;
 }
