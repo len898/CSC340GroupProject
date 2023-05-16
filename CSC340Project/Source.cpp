@@ -11,7 +11,7 @@ public:
 	/**
 	 * Node constructor function.
 	 * Initializes the next and prev to nullptr.
-	 * 
+	 *
 	 * @param data The data that the node will hold.
 	 */
 	Node(T data) {
@@ -130,40 +130,40 @@ public:
 	/**
 	 * Creates a new Node from the given data and adds
 	 * it to the end of the LinkedList.
-	 * 
+	 *
 	 * @param data The data to be added.
 	 */
 	void add(T data) {
 		Node<T>* newNode = new Node<T>(data);
 
 		if (head == nullptr) {
-			head = newNode;
-			tail = newNode;
+			this->head = newNode;
+			this->tail = newNode;
 		}
 		else {
-			tail->setNextNode(newNode);
+			this->tail->setNextNode(newNode);
 			newNode->setPrevNode(tail);
-			tail = newNode;
+			this->tail = newNode;
 		}
 	}
 
 	/**
 	 * Removes the first Node that matches the given data.
-	 * 
+	 *
 	 * Uses the search function to find the Node.
-	 * 
+	 *
 	 * @param data The data to be removed.
 	 */
 	void remove(T data) {
 		Node<T>* nodeToDelete = search(data);
 		if (nodeToDelete != nullptr) {
-			if (nodeToDelete == head) {
-				head = head->getNextNode();
-				head->setPrevNodeNull();
+			if (nodeToDelete == this->head) {
+				this->head = this->head->getNextNode();
+				this->head->setPrevNodeNull();
 			}
-			else if (nodeToDelete == tail) {
-				tail = tail->getPrevNode();
-				tail->setNextNodeNull();
+			else if (nodeToDelete == this->tail) {
+				this->tail = this->tail->getPrevNode();
+				this->tail->setNextNodeNull();
 			}
 			else {
 				Node<T>* prevNode = nodeToDelete->getPrevNode();
@@ -178,35 +178,35 @@ public:
 	/**
 	 * Creates a new Node from the given data and inserts
 	 * it into the LinkedList in sorted order.
-	 * 
+	 *
 	 * Assumes the LinkedList is sorted, otherwise will
 	 * insert it into the first place that it thinks it
 	 * will go in.
-	 * 
+	 *
 	 * @param data The data to be inserted.
 	 */
 	void insert(T data) {
-        Node<T>* newNode = new Node<T>(data);
-        if (head == nullptr) {
-            head = newNode;
-            tail = newNode;
-            return;
-        }
-        if (data <= head-> getData()) {
-            newNode->setNextNode(head);
-            head->setPrevNode(newNode);
-            head = newNode;
-            return;
-        }
-        if (data >= tail->getData()) {
-            newNode->setPrevNode(tail);
-            tail->setNextNode(newNode);
-            tail = newNode;
-            return;
-        }
-        Node<T>* temp = head;
-        while (temp->getNextNode() != nullptr && temp->getNextNode()->getData() < data) {
-            temp = temp->getNextNode();
+		Node<T>* newNode = new Node<T>(data);
+		if (head == nullptr) {
+			this->head = newNode;
+			this->tail = newNode;
+			return;
+		}
+		if (data <= head->getData()) {
+			newNode->setNextNode(head);
+			this->head->setPrevNode(newNode);
+			this->head = newNode;
+			return;
+		}
+		if (data >= tail->getData()) {
+			newNode->setPrevNode(tail);
+			this->tail->setNextNode(newNode);
+			this->tail = newNode;
+			return;
+		}
+		Node<T>* temp = this->head;
+		while (temp->getNextNode() != nullptr && temp->getNextNode()->getData() < data) {
+			temp = temp->getNextNode();
 
         }
 
@@ -226,11 +226,11 @@ public:
 	 * Returns the first Node to match the given data,
 	 * otherwise returns nullptr if no Node match the
 	 * given data.
-	 * 
+	 *
 	 * @param data The data to be searched.
 	 */
 	Node<T>* search(T data) {
-		Node<T>* temp = head;
+		Node<T>* temp = this->head;
 
 		while (temp) {
 			if (temp->getData() == data) {
@@ -246,7 +246,7 @@ public:
 	/**
 	 * Modified the LinkedList from which it was called.
 	 * Calling LinkedList will be modified and sorted.
-	 * 
+	 *
 	 * @param listTwo Does not need to be sorted and remains unchanged.
 	 */
 	void mergeLists(const LinkedList<T>* listTwo) {
@@ -266,49 +266,47 @@ public:
 	/**
 	 * Sorts the LinkedList using the bubble sort algorithm.
 	 */
-	void bubbleSort(){
-	    if (head == nullptr || head -> getNextNode() == nullptr)
-	        return;
-	            // do not sort if empty or one 
-	    bool swap;
-            Node <T>* current = head;
-            Node <T>* sorttail = nullptr;
+	void bubbleSort() {
+		if (this->head == nullptr || this->head->getNextNode() == nullptr)
+			return;
+		// do not sort if empty or one 
 
-            while ( current != sorttail){
-                swap = false;
-                Node <T>* current2 = head;
-        
-                while (current2 -> getNextNode () != sorttail){
-                    if (current2 -> getData () > current2 -> getNextNode() -> getData()){
-                        T temp = current2 -> getData();
-                        current2 -> setData(current2 -> getNextNode()-> getData());
-                        current2 ->getNextNode()->setData(temp);
-                        swap = true;
-                    }
-                    current2 = current2 -> getNextNode();
-                    
-                }
-                sorttail = current2; // update tail to last swap
-                if (!swap)
-                    break; // if no swap the list is already sorted
-                                            
-            }
-	            
-                
-       }
+		bool swap;
+		Node <T>* current = this->head;
+		Node <T>* end = nullptr;
+
+		while (current != end) {
+			swap = false;
+			Node <T>* current2 = this->head;
+
+			while (current2->getNextNode() != end) {
+				if (current2->getData() > current2->getNextNode()->getData()) {
+					T temp = current2->getData();
+					current2->setData(current2->getNextNode()->getData());
+					current2->getNextNode()->setData(temp);
+					swap = true;
+				}
+				current2 = current2->getNextNode();
+
+			}
+			end = current2; // update end to last swap
+			if (!swap)
+				break; // if no swap the list is already sorted
+		}
+	}
 
 	/**
 	 * Sorts the LinkedList using the merge sort algorithm.
 	 */
 	void mergeSort() {
 		// base case: 1 or 0 Nodes
-		if (head == nullptr || head->getNextNode() == nullptr) {
+		if (this->head == nullptr || this->head->getNextNode() == nullptr) {
 			return;
 		}
 
 		// split the LinkedList in half
-		Node<T>* subHead1 = head;
-		Node<T>* subHead2 = head;
+		Node<T>* subHead1 = this->head;
+		Node<T>* subHead2 = this->head;
 
 		int size = 0;
 		while (subHead1 != nullptr) {
@@ -318,31 +316,31 @@ public:
 			}
 		}
 
-		subHead1 = head;
+		subHead1 = this->head;
 
 		// detach the two halves
 		subHead2->getPrevNode()->setNextNodeNull();
 		subHead2->setPrevNodeNull();
 
 		// recurse first half
-		head = subHead1;
+		this->head = subHead1;
 		mergeSort();
-		subHead1 = head;
+		subHead1 = this->head;
 
 		// recurse second half
-		head = subHead2;
+		this->head = subHead2;
 		mergeSort();
-		subHead2 = head;
+		subHead2 = this->head;
 
 		// merge both halves
-		head = nullptr;
+		this->head = nullptr;
 		Node<T>* nodeptr = nullptr;
 
 		// compare head of both halves
 		while (subHead1 != nullptr && subHead2 != nullptr) {
 			if (subHead1->getData() < subHead2->getData()) {
-				if (head == nullptr) {
-					head = subHead1;
+				if (this->head == nullptr) {
+					this->head = subHead1;
 					nodeptr = subHead1;
 				}
 				else {
@@ -353,8 +351,8 @@ public:
 				subHead1 = subHead1->getNextNode();
 			}
 			else {
-				if (head == nullptr) {
-					head = subHead2;
+				if (this->head == nullptr) {
+					this->head = subHead2;
 					nodeptr = subHead2;
 				}
 				else {
@@ -368,8 +366,8 @@ public:
 
 		// add the rest of first half to the main LinkedList
 		while (subHead1 != nullptr) {
-			if (head == nullptr) {
-				head = subHead1;
+			if (this->head == nullptr) {
+				this->head = subHead1;
 				nodeptr = subHead1;
 			}
 			else {
@@ -382,8 +380,8 @@ public:
 
 		// add the rest of second half to the main LinkedList
 		while (subHead2 != nullptr) {
-			if (head == nullptr) {
-				head = subHead2;
+			if (this->head == nullptr) {
+				this->head = subHead2;
 				nodeptr = subHead2;
 			}
 			else {
@@ -437,11 +435,11 @@ public:
 	 * Clears the LinkedList and deletes each Node.
 	 */
 	void clear() {
-		Node<T>* nodeToDelete = head;
-		while (head != nullptr) {
-			head = head->getNextNode();
+		Node<T>* nodeToDelete = this->head;
+		while (this->head != nullptr) {
+			this->head = head->getNextNode();
 			delete nodeToDelete;
-			nodeToDelete = head;
+			nodeToDelete = this->head;
 		}
 	}
 
@@ -472,6 +470,7 @@ public:
 	 */
 	void print() {
 		std::cout << toString() << std::endl;
+
 	}
 
 
@@ -722,7 +721,7 @@ void testMergeSort() {
 		stringList->add(stringItems[i]);
 	}
 
-	int intItems[26] = {23, 1, 21, 5, 4, 17, 15, 13, 3, 2, 12, 19, 6, 10, 20, 26, 18, 9, 25, 24, 16, 14, 11, 22, 8, 7};
+	int intItems[26] = { 23, 1, 21, 5, 4, 17, 15, 13, 3, 2, 12, 19, 6, 10, 20, 26, 18, 9, 25, 24, 16, 14, 11, 22, 8, 7 };
 	LinkedList<int>* intList = new LinkedList<int>();
 
 	for (unsigned int i = 0; i < 26; ++i) {
@@ -859,8 +858,134 @@ void testLinkedList() {
 }
 
 
+class Vault
+{
+public:
+	Vault() {
+		this->balance = 0;
+	}
+	Vault(int startBal) {
+		this->balance = startBal;
+	}
+	~Vault() {}
+	bool operator==(const Vault& r) {
+		return this->balance == r.balance;
+	}
+
+	bool operator!=(const Vault& r) {
+		return this->balance != r.balance;
+	}
+
+	bool operator<(const Vault& r) {
+		return this->balance < r.balance;
+	}
+
+	bool operator>(const Vault& r) {
+		return this->balance > r.balance;
+	}
+
+	bool operator<=(const Vault& r) {
+		return this->balance <= r.balance;
+	}
+
+	bool operator>=(const Vault& r) {
+		return this->balance >= r.balance;
+	}
+
+
+
+
+
+private:
+	friend std::ostream& operator<<(std::ostream& os, const Vault& v) {
+		os << v.balance;
+		return os;
+	}
+	int balance;
+};
+
+
+void demo() {
+
+	Vault vault1 = Vault(10);
+	Vault vault2 = Vault();
+	Vault vault3 = Vault(30);
+	Vault vault4 = Vault();
+
+	LinkedList<Vault> BankSystem = LinkedList<Vault>();
+	BankSystem.add(vault1);
+	BankSystem.add(vault2);
+	BankSystem.add(vault3);
+	BankSystem.add(vault4);
+	BankSystem.print();
+	BankSystem.mergeSort();
+	BankSystem.print();
+	int choice = 0;
+	while (choice != -1) {
+		std::cout << "Banking System Main Menu: " << std::endl;
+		std::cout << "Enter '1' to print the current Bank System" << std::endl;
+		std::cout << "Enter '2' to add a vault to the current system" << std::endl;
+		std::cout << "Enter '3' to search for a vault" << std::endl;
+		std::cout << "Enter '4' to do a binary search must be sorted" << std::endl;
+		/*std::cout << "Enter '5' to merge another Bank System into this one" << std::endl;*/
+		std::cout << "Enter '5' to bubble sort the Bank System" << std::endl;
+		std::cout << "Enter '6' to merge sort the Bank System" << std::endl;
+		std::cin >> choice;
+		switch (choice) {
+		case 1:
+			std::cout << "Current Bank System: ";
+			BankSystem.print();
+			std::cout << std::endl;
+			break;
+		case 2:
+			int toAdd;
+			std::cout << "Enter the value of the new vault to add to the system: ";
+			std::cin >> toAdd;
+			BankSystem.add(Vault(toAdd));
+			std::cout << "Added" << std::endl;
+			break;
+		case 3:
+			int searchTarget;
+			std::cout << "Enter the value of the target vault";
+			std::cin >> searchTarget;
+			if (BankSystem.search(searchTarget)) {
+				std::cout << "Vault located" << std::endl;
+			}
+			else {
+				std::cout << "Vault not located" << std::endl;
+			}
+			break;
+		case 4:
+			int binaryTarget;
+			std::cout << "Enter the value of the target vault";
+			std::cin >> binaryTarget;
+			if (BankSystem.binarySearch(binaryTarget)) {
+				std::cout << "Vault located" << std::endl;
+			}
+			else {
+				std::cout << "Vault not located" << std::endl;
+			}
+			break;
+		case 5:
+			std::cout << "Bubble Sorting" << std::endl;
+			BankSystem.bubbleSort();
+			std::cout << "Sorted!" << std::endl;
+		case 6:
+			std::cout << "Merge Sorting" << std::endl;
+			BankSystem.mergeSort();
+			std::cout << "Sorted!" << std::endl;
+		default:
+			std::cout << "Enter a value between 1 and 6 or -1";
+		}
+
+
+	}
+}
+
+
 int main(int argc, const char* argv[]) {
-	
-	testLinkedList();
+
+	//testLinkedList();
+	demo();
 	return 0;
 }
