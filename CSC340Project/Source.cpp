@@ -1,3 +1,5 @@
+
+
 #include <iostream>
 #include <string>
 #include <typeinfo>
@@ -206,12 +208,19 @@ public:
 		while (temp->getNextNode() != nullptr && temp->getNextNode()->getData() < data) {
 			temp = temp->getNextNode();
 
-		}
-		newNode->setNextNode(temp->getNextNode());
-		temp->setNextNode(newNode);
-		newNode->setPrevNode(temp);
-		newNode->getNextNode()->setPrevNode(newNode);
-	}
+        }
+
+        //tail -> setNextNode (newNode);
+        newNode -> setPrevNode(temp);
+        //tail = newNode;
+        newNode->setNextNode(temp->getNextNode());
+        temp->getNextNode()->setPrevNode(newNode);
+        temp->setNextNode(newNode);
+        if(newNode->getNextNode() == nullptr){
+            tail = newNode;
+        }
+            
+    }
 
 	/**
 	 * Returns the first Node to match the given data,
@@ -474,7 +483,7 @@ private:
 	 * Used to fix compatibility with LinkedList<std::string> type.
 	 */
 	std::string to_string(const T& obj) {
-		std::ostringstream oss{};
+		std::ostringstream oss;
 		oss << obj;
 		return oss.str();
 	}
@@ -514,26 +523,29 @@ void testAddRemove() {
 /**
  * A function that tests inserting items into LinkedLists.
  */
-void testInsert() {
-	LinkedList<int> intList;
-	LinkedList <std::string> stringList;
+void testInsert(){
+    LinkedList<int> intList;
+    LinkedList <std:: string> stringList;
 
-	//pi
-	intList.insert(3);
-	intList.insert(1);
-	intList.insert(4);
-	intList.insert(2);
-	intList.insert(9);
-	intList.insert(5);
+    //pi
+    intList.insert(3);
+    intList.insert(1);
+    intList.insert(4);
+    intList.insert(1);
+    intList.insert(5);
+    intList.insert(9);
+    
+    
+    std:: cout << "Inserted: " << intList.toString() << std:: endl;
 
-	std::cout << "Inserted: " << intList.toString() << std::endl;
+    stringList.insert("pug");
+    stringList.insert("bear");
+    stringList.insert("zebra");
 
-	stringList.insert("one");
-	stringList.insert("two");
-	stringList.insert("three");
-
-	std::cout << "inserted: " << stringList.toString() << std::endl;
+    std:: cout << "inserted: " << stringList.toString() << std :: endl;
 }
+
+
 
 /**
  * A function that tests searching for items in a LinkedLists.
@@ -738,33 +750,35 @@ void testMergeSort() {
 /**
  * A function that tests the bubble sort algorithm.
  */
-void testBubbleSort() {
+void testBubbleSort(){
 	LinkedList<int> intList;
-	LinkedList< std::string> stringList;
+	LinkedList< std :: string> stringList;
 
-	intList.insert(3);
-	intList.insert(1);
-	intList.insert(4);
-	intList.insert(1);
-	intList.insert(5);
-	intList.insert(9);
-	intList.insert(2);
+	//add 
+	intList.add(3);
+	intList.add(1);
+	intList.add(4);
+	intList.add(1);
+	intList.add(5);
+	intList.add(9);
+	intList.add(2);
 
-	std::cout << "before sorting: " << intList.toString() << std::endl;
+	std :: cout << "before sorting: " << intList.toString() << std:: endl;
 	intList.bubbleSort();
-	std::cout << "after sorting: " << intList.toString() << std::endl;
 
-	stringList.add("zzz");
+	std:: cout << "after sorting: " << intList.toString() <<std :: endl;
+
+	stringList.add ("zzz");
 	stringList.add("bbb");
 	stringList.add("eee");
 	stringList.add("ddd");
 
-	std::cout << "before sorting: " << stringList.toString() << std::endl;
+	std:: cout << " " << std:: endl;
+	std:: cout << "before sorting: " << stringList.toString() << std ::endl;
 	stringList.bubbleSort();
-	std::cout << "after sorting: " << stringList.toString() << std::endl;
+	std :: cout << "after sorting: " << stringList.toString() << std :: endl;
 
 }
-
 
 /**
  * A function that tests the binary search algorithm.
@@ -816,9 +830,10 @@ void testLinkedList() {
 	testAddRemove();
 	std::cout << std::endl;
 
-	std::cout << " -- Insert Node Test -- " << std::endl;
+	std:: cout << " --Insert test-- " << std :: endl;
 	testInsert();
-	std::cout << std::endl;
+	std:: cout << " " << std:: endl;
+	std:: cout << "EXPECTED OUTPUT FOR INSERT TEST: \n {1, 1, 3, 4, 5, 9} \n {bear, pug, zebra} \n" ;
 
 	std::cout << " -- Search For Node Test -- " << std::endl;
 	testSearch();
@@ -828,9 +843,10 @@ void testLinkedList() {
 	testMerge();
 	std::cout << std::endl;
 
-	std::cout << " -- Bubble Sort Test -- " << std::endl;
-	testBubbleSort();
-	std::cout << std::endl;
+	std:: cout << " --Bubble Sort Test-- " << std:: endl;
+    testBubbleSort();
+    std:: cout << " " << std:: endl;
+    std:: cout << "EXPECTED OUTPUT FOR BUBBLE SORT: \n {1, 1, 2, 3, 4, 5, 9} \n {bbb, ddd, eee, zzz} \n";
 
 	std::cout << " -- Merge Sort Test -- " << std::endl;
 	testMergeSort();
