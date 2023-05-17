@@ -208,19 +208,19 @@ public:
 		while (temp->getNextNode() != nullptr && temp->getNextNode()->getData() < data) {
 			temp = temp->getNextNode();
 
-        }
+		}
 
-        //tail -> setNextNode (newNode);
-        newNode -> setPrevNode(temp);
-        //tail = newNode;
-        newNode->setNextNode(temp->getNextNode());
-        temp->getNextNode()->setPrevNode(newNode);
-        temp->setNextNode(newNode);
-        if(newNode->getNextNode() == nullptr){
-            tail = newNode;
-        }
-            
-    }
+		//tail -> setNextNode (newNode);
+		newNode->setPrevNode(temp);
+		//tail = newNode;
+		newNode->setNextNode(temp->getNextNode());
+		temp->getNextNode()->setPrevNode(newNode);
+		temp->setNextNode(newNode);
+		if (newNode->getNextNode() == nullptr) {
+			tail = newNode;
+		}
+
+	}
 
 	/**
 	 * Returns the first Node to match the given data,
@@ -523,26 +523,26 @@ void testAddRemove() {
 /**
  * A function that tests inserting items into LinkedLists.
  */
-void testInsert(){
-    LinkedList<int> intList;
-    LinkedList <std:: string> stringList;
+void testInsert() {
+	LinkedList<int> intList;
+	LinkedList <std::string> stringList;
 
-    //pi
-    intList.insert(3);
-    intList.insert(1);
-    intList.insert(4);
-    intList.insert(1);
-    intList.insert(5);
-    intList.insert(9);
-    
-    
-    std:: cout << "Inserted: " << intList.toString() << std:: endl;
+	//pi
+	intList.insert(3);
+	intList.insert(1);
+	intList.insert(4);
+	intList.insert(1);
+	intList.insert(5);
+	intList.insert(9);
 
-    stringList.insert("pug");
-    stringList.insert("bear");
-    stringList.insert("zebra");
 
-    std:: cout << "inserted: " << stringList.toString() << std :: endl;
+	std::cout << "Inserted: " << intList.toString() << std::endl;
+
+	stringList.insert("pug");
+	stringList.insert("bear");
+	stringList.insert("zebra");
+
+	std::cout << "inserted: " << stringList.toString() << std::endl;
 }
 
 
@@ -750,9 +750,9 @@ void testMergeSort() {
 /**
  * A function that tests the bubble sort algorithm.
  */
-void testBubbleSort(){
+void testBubbleSort() {
 	LinkedList<int> intList;
-	LinkedList< std :: string> stringList;
+	LinkedList< std::string> stringList;
 
 	//add 
 	intList.add(3);
@@ -763,20 +763,20 @@ void testBubbleSort(){
 	intList.add(9);
 	intList.add(2);
 
-	std :: cout << "before sorting: " << intList.toString() << std:: endl;
+	std::cout << "before sorting: " << intList.toString() << std::endl;
 	intList.bubbleSort();
 
-	std:: cout << "after sorting: " << intList.toString() <<std :: endl;
+	std::cout << "after sorting: " << intList.toString() << std::endl;
 
-	stringList.add ("zzz");
+	stringList.add("zzz");
 	stringList.add("bbb");
 	stringList.add("eee");
 	stringList.add("ddd");
 
-	std:: cout << " " << std:: endl;
-	std:: cout << "before sorting: " << stringList.toString() << std ::endl;
+	std::cout << " " << std::endl;
+	std::cout << "before sorting: " << stringList.toString() << std::endl;
 	stringList.bubbleSort();
-	std :: cout << "after sorting: " << stringList.toString() << std :: endl;
+	std::cout << "after sorting: " << stringList.toString() << std::endl;
 
 }
 
@@ -830,10 +830,10 @@ void testLinkedList() {
 	testAddRemove();
 	std::cout << std::endl;
 
-	std:: cout << " --Insert test-- " << std :: endl;
+	std::cout << " --Insert test-- " << std::endl;
 	testInsert();
-	std:: cout << " " << std:: endl;
-	std:: cout << "EXPECTED OUTPUT FOR INSERT TEST: \n {1, 1, 3, 4, 5, 9} \n {bear, pug, zebra} \n" ;
+	std::cout << " " << std::endl;
+	std::cout << "EXPECTED OUTPUT FOR INSERT TEST: \n {1, 1, 3, 4, 5, 9} \n {bear, pug, zebra} \n";
 
 	std::cout << " -- Search For Node Test -- " << std::endl;
 	testSearch();
@@ -843,10 +843,10 @@ void testLinkedList() {
 	testMerge();
 	std::cout << std::endl;
 
-	std:: cout << " --Bubble Sort Test-- " << std:: endl;
-    testBubbleSort();
-    std:: cout << " " << std:: endl;
-    std:: cout << "EXPECTED OUTPUT FOR BUBBLE SORT: \n {1, 1, 2, 3, 4, 5, 9} \n {bbb, ddd, eee, zzz} \n";
+	std::cout << " --Bubble Sort Test-- " << std::endl;
+	testBubbleSort();
+	std::cout << " " << std::endl;
+	std::cout << "EXPECTED OUTPUT FOR BUBBLE SORT: \n {1, 1, 2, 3, 4, 5, 9} \n {bbb, ddd, eee, zzz} \n";
 
 	std::cout << " -- Merge Sort Test -- " << std::endl;
 	testMergeSort();
@@ -898,7 +898,7 @@ public:
 
 private:
 	friend std::ostream& operator<<(std::ostream& os, const Vault& v) {
-		os << v.balance;
+		os << "Vault with balance: " << v.balance;
 		return os;
 	}
 	int balance;
@@ -907,19 +907,12 @@ private:
 
 void demo() {
 
-	Vault vault1 = Vault(10);
-	Vault vault2 = Vault();
-	Vault vault3 = Vault(30);
-	Vault vault4 = Vault();
 
 	LinkedList<Vault> BankSystem = LinkedList<Vault>();
-	BankSystem.add(vault1);
-	BankSystem.add(vault2);
-	BankSystem.add(vault3);
-	BankSystem.add(vault4);
-	BankSystem.print();
-	BankSystem.mergeSort();
-	BankSystem.print();
+	LinkedList<Vault> BankSystem2 = LinkedList<Vault>();
+	BankSystem2.add(Vault(100));
+	BankSystem2.add(Vault(100000));
+	BankSystem2.add(Vault(13));
 	int choice = 0;
 	while (choice != -1) {
 		std::cout << "Banking System Main Menu: " << std::endl;
@@ -927,9 +920,10 @@ void demo() {
 		std::cout << "Enter '2' to add a vault to the current system" << std::endl;
 		std::cout << "Enter '3' to search for a vault" << std::endl;
 		std::cout << "Enter '4' to do a binary search must be sorted" << std::endl;
-		/*std::cout << "Enter '5' to merge another Bank System into this one" << std::endl;*/
 		std::cout << "Enter '5' to bubble sort the Bank System" << std::endl;
 		std::cout << "Enter '6' to merge sort the Bank System" << std::endl;
+		std::cout << "Enter '7' to merge another Bank System into this one" << std::endl;
+		std::cout << "Enter '-1' to exit the management system" << std::endl;
 		std::cin >> choice;
 		switch (choice) {
 		case 1:
@@ -946,7 +940,7 @@ void demo() {
 			break;
 		case 3:
 			int searchTarget;
-			std::cout << "Enter the value of the target vault";
+			std::cout << "Enter the value of the target vault ";
 			std::cin >> searchTarget;
 			if (BankSystem.search(searchTarget)) {
 				std::cout << "Vault located" << std::endl;
@@ -957,7 +951,7 @@ void demo() {
 			break;
 		case 4:
 			int binaryTarget;
-			std::cout << "Enter the value of the target vault";
+			std::cout << "Enter the value of the target vault ";
 			std::cin >> binaryTarget;
 			if (BankSystem.binarySearch(binaryTarget)) {
 				std::cout << "Vault located" << std::endl;
@@ -970,10 +964,20 @@ void demo() {
 			std::cout << "Bubble Sorting" << std::endl;
 			BankSystem.bubbleSort();
 			std::cout << "Sorted!" << std::endl;
+			break;
 		case 6:
 			std::cout << "Merge Sorting" << std::endl;
 			BankSystem.mergeSort();
 			std::cout << "Sorted!" << std::endl;
+			break;
+		case 7:
+			std::cout << "Merging other Bank System" << std::endl;
+			std::cout << "Other system: ";
+			BankSystem2.print();
+			BankSystem.mergeLists(&BankSystem2);
+			std::cout << "New Merge System: ";
+			BankSystem.print();
+			break;
 		default:
 			std::cout << "Enter a value between 1 and 6 or -1";
 		}
