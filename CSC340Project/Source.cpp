@@ -1,11 +1,11 @@
 /********************************************//**
  *  @file Source.cpp
  *  @brief Spring 2023 - CSC340.05 Final Project
- *  
+ *
  *  This is the final project to make a custom
  *  LinkedList and Node class project for
  *  Spring 2023 - CSC340.05
- *  
+ *
  *  @author Ashley Ching
  *  @author Charlene Breanne Calderon
  *  @author Eduardo Loza
@@ -17,9 +17,9 @@
 #include <typeinfo>
 #include <sstream>
 
-/**
- * A Node class used to in the LinkedList class.
- */
+ /**
+  * A Node class used to in the LinkedList class.
+  */
 template<typename T>
 class Node {
 public:
@@ -214,20 +214,22 @@ public:
 
 		}
 
-        newNode -> setPrevNode(temp);
-        newNode->setNextNode(temp->getNextNode());
-        temp->getNextNode()->setPrevNode(newNode);
-        temp->setNextNode(newNode);
-        if(newNode->getNextNode() == nullptr){
-            this->tail = newNode;
-        }
-            
-    }
+		newNode->setPrevNode(temp);
+		newNode->setNextNode(temp->getNextNode());
+		temp->getNextNode()->setPrevNode(newNode);
+		temp->setNextNode(newNode);
+		if (newNode->getNextNode() == nullptr) {
+			this->tail = newNode;
+		}
+
+	}
 
 	/**
 	 * Returns the first Node to match the given data,
 	 * otherwise returns nullptr if no Node match the
 	 * given data.
+	 *
+	 * For Custom Data Type Requires the comparison operators to be overloaded/implemented.
 	 *
 	 * @param data The data to be searched.
 	 */
@@ -248,7 +250,9 @@ public:
 	/**
 	 * Searches for a value using binary search.
 	 * Requires the list to be sorted to work.
-	 * 
+	 *
+	 * For Custom Data Type Requires the comparison operators to be overloaded/implemented.
+	 *
 	 * @param target The value to look for.
 	 */
 	Node<T>* binarySearch(T target) {
@@ -267,7 +271,7 @@ public:
 				else if (target == searchTail->getData()) {
 					return searchTail;
 				}
-
+				//When iterating, to make operation more efficient, eliminates the begin,middle,and end points
 				if (target < searchMid->getData()) {
 					searchHead = searchHead->getNextNode();
 					searchTail = searchMid->getPrevNode();
@@ -280,13 +284,14 @@ public:
 				}
 			}
 		}
-		
+
 		return nullptr;
 	}
 
 	/**
 	 * Modified the LinkedList from which it was called.
 	 * Calling LinkedList will be modified and sorted.
+	 * Both lists need to have the same DataType.
 	 *
 	 * @param listTwo Does not need to be sorted and remains unchanged.
 	 */
@@ -295,8 +300,10 @@ public:
 			return;
 		}
 		else {
-			mergeSort();
+			//Sort the list for the inserting to work in the correct way
+			this->mergeSort();
 			Node<T>* temp = listTwo->head;
+			//Iterate over the second list, and insert each value into the list
 			while (temp != nullptr) {
 				this->insert(temp->getData());
 				temp = temp->getNextNode();
@@ -306,6 +313,8 @@ public:
 
 	/**
 	 * Sorts the LinkedList using the bubble sort algorithm.
+	 *
+	 * For Custom Data Type Requires the comparison operators to be overloaded/implemented.
 	 */
 	void bubbleSort() {
 		// do not sort if empty or one 
@@ -316,18 +325,18 @@ public:
 		Node<T>* current = this->head;
 		Node<T>* sorttail = nullptr;
 
-		while (current != sorttail){
+		while (current != sorttail) {
 			swap = false;
 			Node <T>* current2 = this->head;
-	
-			while (current2->getNextNode () != sorttail){
-				if (current2->getData() > current2->getNextNode()->getData()){
-					T temp = current2 -> getData();
+
+			while (current2->getNextNode() != sorttail) {
+				if (current2->getData() > current2->getNextNode()->getData()) {
+					T temp = current2->getData();
 					current2->setData(current2->getNextNode()->getData());
 					current2->getNextNode()->setData(temp);
 					swap = true;
 				}
-				current2 = current2->getNextNode();				
+				current2 = current2->getNextNode();
 			}
 			sorttail = current2; // update tail to last swap
 			if (!swap)
@@ -337,6 +346,8 @@ public:
 
 	/**
 	 * Sorts the LinkedList using the merge sort algorithm.
+	 *
+	 * For Custom Data Type Requires the comparison operators to be overloaded/implemented.
 	 */
 	void mergeSort() {
 		// base case: 1 or 0 Nodes
@@ -446,6 +457,8 @@ public:
 	/**
 	 * Returns the string representation of the LinkedList
 	 * in the form of an array.
+	 *
+	 * For Custom Data Type Requires the ostream operator to be overloaded.
 	 */
 	std::string toString() {
 		Node<T>* temp = this->head;
@@ -465,6 +478,8 @@ public:
 
 	/**
 	 * Prints the string representation of the LinkedList.
+	 *
+	 * For Custom Data Type Requires the ostream operator to be overloaded.
 	 */
 	void print() {
 		std::cout << toString() << std::endl;
@@ -477,7 +492,9 @@ private:
 	/**
 	 * Custom to_string that allows a string to string convertion.
 	 * Used to fix compatibility with LinkedList<std::string> type.
-	 * 
+	 *
+	 * For Custom Data Type Requires the ostream operator to be overloaded.
+	 *
 	 * @ param obj The data that is to be turned into a string.
 	 */
 	static std::string to_string(const T& obj) {
@@ -490,7 +507,7 @@ private:
 	 * A function that finds the middle Node between two given Nodes.
 	 * This is a private function so we will assume that Nodes are within
 	 * the LinkedList and do not have to worry about Nodes that do not belong.
-	 * 
+	 *
 	 * @param start The Node where we start our search from.
 	 * @param end The Node where we end our search from.
 	 */
@@ -512,7 +529,7 @@ private:
 
 /**
  * An assertion test function.
- * 
+ *
  * @param actual The result generated from the test.
  * @param expected The result you expected to get.
  */
@@ -589,8 +606,8 @@ void testInsert() {
 	LinkedList <std::string> stringList;
 
 	// pi
-	int intItems[9] = {3, 1, 4, 1, 5, 9, 2, 6, 5};
-	for (unsigned int i = 0 ; i < 9; ++i) {
+	int intItems[9] = { 3, 1, 4, 1, 5, 9, 2, 6, 5 };
+	for (unsigned int i = 0; i < 9; ++i) {
 		intList.insert(intItems[i]);
 		std::cout << "[\033[0;36m----\033[0m] ";
 		intList.print();
@@ -600,7 +617,7 @@ void testInsert() {
 	assertion(intList.toString(), std::string("{1, 1, 2, 3, 3, 4, 5, 5, 6, 9}"));
 	intList.print();
 
-	std::string stringItems[2] = {"pug", "bear"};
+	std::string stringItems[2] = { "pug", "bear" };
 	for (unsigned int i = 0; i < 2; ++i) {
 		stringList.insert(stringItems[i]);
 		std::cout << "[\033[0;36m----\033[0m] ";
@@ -830,7 +847,7 @@ void testBubbleSort() {
 	LinkedList<int> intList;
 	LinkedList<std::string> stringList;
 
-	int intItems[10] = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3};
+	int intItems[10] = { 3, 1, 4, 1, 5, 9, 2, 6, 5, 3 };
 	for (unsigned int i = 0; i < 10; ++i) {
 		intList.add(intItems[i]);
 	}
@@ -841,7 +858,7 @@ void testBubbleSort() {
 	assertion(intList.toString(), std::string("{1, 1, 2, 3, 3, 4, 5, 5, 6, 9}"));
 	std::cout << "After Sorting: " << intList.toString() << std::endl;
 
-	std::string stringItems[4] = {"zzz", "bbb", "eee", "ddd"};
+	std::string stringItems[4] = { "zzz", "bbb", "eee", "ddd" };
 	for (unsigned int i = 0; i < 4; ++i) {
 		stringList.add(stringItems[i]);
 	}
@@ -869,7 +886,7 @@ void testMergeSort() {
 		stringList.add(stringItems[i]);
 	}
 
-	int intItems[26] = {23, 1, 21, 5, 4, 17, 15, 13, 3, 2, 12, 19, 6, 10, 20, 26, 18, 9, 25, 24, 16, 14, 11, 22, 8, 7};
+	int intItems[26] = { 23, 1, 21, 5, 4, 17, 15, 13, 3, 2, 12, 19, 6, 10, 20, 26, 18, 9, 25, 24, 16, 14, 11, 22, 8, 7 };
 	LinkedList<int> intList = LinkedList<int>();
 
 	for (unsigned int i = 0; i < 26; ++i) {
@@ -927,11 +944,11 @@ void testLinkedList() {
 
 	std::cout << " -- Bubble Sort Test -- " << std::endl;
 	testBubbleSort();
-	std:: cout << std::endl;
+	std::cout << std::endl;
 
 	std::cout << " -- Merge Sort Test -- " << std::endl;
 	testMergeSort();
-	std:: cout << std::endl;
+	std::cout << std::endl;
 }
 
 class Vault
@@ -999,63 +1016,63 @@ void demo() {
 		std::cin >> choice;
 		if (system("cls")) system("clear");
 		switch (choice) {
-			case 1:
-				std::cout << "Current Bank System: ";
-				BankSystem.print();
-				std::cout << std::endl;
-				break;
-			case 2:
-				int toAdd;
-				std::cout << "Enter the value of the new vault to add to the system: ";
-				std::cin >> toAdd;
-				BankSystem.add(Vault(toAdd));
-				std::cout << "Added" << std::endl;
-				break;
-			case 3:
-				int searchTarget;
-				std::cout << "Enter the value of the target vault: ";
-				std::cin >> searchTarget;
-				if (BankSystem.search(searchTarget)) {
-					std::cout << "Vault located" << std::endl;
-				}
-				else {
-					std::cout << "Vault not located" << std::endl;
-				}
-				break;
-			case 4:
-				int binaryTarget;
-				std::cout << "Enter the value of the target vault: ";
-				std::cin >> binaryTarget;
-				if (BankSystem.binarySearch(binaryTarget)) {
-					std::cout << "Vault located" << std::endl;
-				}
-				else {
-					std::cout << "Vault not located" << std::endl;
-				}
-				break;
-			case 5:
-				std::cout << "Bubble Sorting" << std::endl;
-				BankSystem.bubbleSort();
-				std::cout << "Sorted!" << std::endl;
-				break;
-			case 6:
-				std::cout << "Merge Sorting" << std::endl;
-				BankSystem.mergeSort();
-				std::cout << "Sorted!" << std::endl;
-				break;
-			case 7:
-				std::cout << "Merging other Bank System" << std::endl;
-				std::cout << "Other system: ";
-				BankSystem2.print();
-				BankSystem.mergeLists(&BankSystem2);
-				std::cout << "New Merge System: ";
-				BankSystem.print();
-				break;
-			case -1:
-				std::cout << "Thank you for using the Banking System" << std::endl;
-				break;
-			default:
-				std::cout << "Enter a value between 1 and 6 or -1";
+		case 1:
+			std::cout << "Current Bank System: ";
+			BankSystem.print();
+			std::cout << std::endl;
+			break;
+		case 2:
+			int toAdd;
+			std::cout << "Enter the value of the new vault to add to the system: ";
+			std::cin >> toAdd;
+			BankSystem.add(Vault(toAdd));
+			std::cout << "Added" << std::endl;
+			break;
+		case 3:
+			int searchTarget;
+			std::cout << "Enter the value of the target vault: ";
+			std::cin >> searchTarget;
+			if (BankSystem.search(searchTarget)) {
+				std::cout << "Vault located" << std::endl;
+			}
+			else {
+				std::cout << "Vault not located" << std::endl;
+			}
+			break;
+		case 4:
+			int binaryTarget;
+			std::cout << "Enter the value of the target vault: ";
+			std::cin >> binaryTarget;
+			if (BankSystem.binarySearch(binaryTarget)) {
+				std::cout << "Vault located" << std::endl;
+			}
+			else {
+				std::cout << "Vault not located" << std::endl;
+			}
+			break;
+		case 5:
+			std::cout << "Bubble Sorting" << std::endl;
+			BankSystem.bubbleSort();
+			std::cout << "Sorted!" << std::endl;
+			break;
+		case 6:
+			std::cout << "Merge Sorting" << std::endl;
+			BankSystem.mergeSort();
+			std::cout << "Sorted!" << std::endl;
+			break;
+		case 7:
+			std::cout << "Merging other Bank System" << std::endl;
+			std::cout << "Other system: ";
+			BankSystem2.print();
+			BankSystem.mergeLists(&BankSystem2);
+			std::cout << "New Merge System: ";
+			BankSystem.print();
+			break;
+		case -1:
+			std::cout << "Thank you for using the Banking System" << std::endl;
+			break;
+		default:
+			std::cout << "Enter a value between 1 and 6 or -1";
 		}
 	}
 }
@@ -1064,9 +1081,10 @@ void demo() {
 int main(int argc, const char* argv[]) {
 	if (argc == 2 && (std::string(argv[1]) == "-t" || std::string(argv[1]) == "--test")) {
 		testLinkedList();
-	} else {
+	}
+	else {
 		demo();
 	}
-	
+
 	return 0;
 }
