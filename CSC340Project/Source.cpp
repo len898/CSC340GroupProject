@@ -393,7 +393,7 @@ public:
 				}
 				else {
 					nodeptr->setNextNode(subHead2);
-					subHead1->setPrevNode(nodeptr);
+					subHead2->setPrevNode(nodeptr);
 					nodeptr = subHead2;
 				}
 				subHead2 = subHead2->getNextNode();
@@ -468,7 +468,6 @@ public:
 	 */
 	void print() {
 		std::cout << toString() << std::endl;
-
 	}
 
 private:
@@ -478,6 +477,8 @@ private:
 	/**
 	 * Custom to_string that allows a string to string convertion.
 	 * Used to fix compatibility with LinkedList<std::string> type.
+	 * 
+	 * @ param obj The data that is to be turned into a string.
 	 */
 	static std::string to_string(const T& obj) {
 		std::ostringstream oss;
@@ -490,8 +491,8 @@ private:
 	 * This is a private function so we will assume that Nodes are within
 	 * the LinkedList and do not have to worry about Nodes that do not belong.
 	 * 
-	 * @param start The Node where we start our search from
-	 * @param end The Node where we end our search from
+	 * @param start The Node where we start our search from.
+	 * @param end The Node where we end our search from.
 	 */
 	static Node<T>* findMid(Node<T>* start, Node<T>* end) {
 		bool flip = true;
@@ -978,8 +979,6 @@ private:
 
 
 void demo() {
-
-
 	LinkedList<Vault> BankSystem = LinkedList<Vault>();
 	LinkedList<Vault> BankSystem2 = LinkedList<Vault>();
 	BankSystem2.add(Vault(100));
@@ -996,72 +995,78 @@ void demo() {
 		std::cout << "Enter '6' to merge sort the Bank System" << std::endl;
 		std::cout << "Enter '7' to merge another Bank System into this one" << std::endl;
 		std::cout << "Enter '-1' to exit the management system" << std::endl;
+		std::cout << "Console: ";
 		std::cin >> choice;
+		if (system("cls")) system("clear");
 		switch (choice) {
-		case 1:
-			std::cout << "Current Bank System: ";
-			BankSystem.print();
-			std::cout << std::endl;
-			break;
-		case 2:
-			int toAdd;
-			std::cout << "Enter the value of the new vault to add to the system: ";
-			std::cin >> toAdd;
-			BankSystem.add(Vault(toAdd));
-			std::cout << "Added" << std::endl;
-			break;
-		case 3:
-			int searchTarget;
-			std::cout << "Enter the value of the target vault ";
-			std::cin >> searchTarget;
-			if (BankSystem.search(searchTarget)) {
-				std::cout << "Vault located" << std::endl;
-			}
-			else {
-				std::cout << "Vault not located" << std::endl;
-			}
-			break;
-		case 4:
-			int binaryTarget;
-			std::cout << "Enter the value of the target vault ";
-			std::cin >> binaryTarget;
-			if (BankSystem.binarySearch(binaryTarget)) {
-				std::cout << "Vault located" << std::endl;
-			}
-			else {
-				std::cout << "Vault not located" << std::endl;
-			}
-			break;
-		case 5:
-			std::cout << "Bubble Sorting" << std::endl;
-			BankSystem.bubbleSort();
-			std::cout << "Sorted!" << std::endl;
-			break;
-		case 6:
-			std::cout << "Merge Sorting" << std::endl;
-			BankSystem.mergeSort();
-			std::cout << "Sorted!" << std::endl;
-			break;
-		case 7:
-			std::cout << "Merging other Bank System" << std::endl;
-			std::cout << "Other system: ";
-			BankSystem2.print();
-			BankSystem.mergeLists(&BankSystem2);
-			std::cout << "New Merge System: ";
-			BankSystem.print();
-			break;
-		default:
-			std::cout << "Enter a value between 1 and 6 or -1";
+			case 1:
+				std::cout << "Current Bank System: ";
+				BankSystem.print();
+				std::cout << std::endl;
+				break;
+			case 2:
+				int toAdd;
+				std::cout << "Enter the value of the new vault to add to the system: ";
+				std::cin >> toAdd;
+				BankSystem.add(Vault(toAdd));
+				std::cout << "Added" << std::endl;
+				break;
+			case 3:
+				int searchTarget;
+				std::cout << "Enter the value of the target vault: ";
+				std::cin >> searchTarget;
+				if (BankSystem.search(searchTarget)) {
+					std::cout << "Vault located" << std::endl;
+				}
+				else {
+					std::cout << "Vault not located" << std::endl;
+				}
+				break;
+			case 4:
+				int binaryTarget;
+				std::cout << "Enter the value of the target vault: ";
+				std::cin >> binaryTarget;
+				if (BankSystem.binarySearch(binaryTarget)) {
+					std::cout << "Vault located" << std::endl;
+				}
+				else {
+					std::cout << "Vault not located" << std::endl;
+				}
+				break;
+			case 5:
+				std::cout << "Bubble Sorting" << std::endl;
+				BankSystem.bubbleSort();
+				std::cout << "Sorted!" << std::endl;
+				break;
+			case 6:
+				std::cout << "Merge Sorting" << std::endl;
+				BankSystem.mergeSort();
+				std::cout << "Sorted!" << std::endl;
+				break;
+			case 7:
+				std::cout << "Merging other Bank System" << std::endl;
+				std::cout << "Other system: ";
+				BankSystem2.print();
+				BankSystem.mergeLists(&BankSystem2);
+				std::cout << "New Merge System: ";
+				BankSystem.print();
+				break;
+			case -1:
+				std::cout << "Thank you for using the Banking System" << std::endl;
+				break;
+			default:
+				std::cout << "Enter a value between 1 and 6 or -1";
 		}
-
-
 	}
 }
 
 
 int main(int argc, const char* argv[]) {
-	testLinkedList();
-	// demo();
+	if (argc == 2 && (std::string(argv[1]) == "-t" || std::string(argv[1]) == "--test")) {
+		testLinkedList();
+	} else {
+		demo();
+	}
 	
 	return 0;
 }
