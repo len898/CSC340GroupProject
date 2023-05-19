@@ -1,0 +1,240 @@
+\doxysection{Node\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_node}{}\label{class_node}\index{Node$<$ T $>$@{Node$<$ T $>$}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_node_a0ac1d44cfe588be564acf25485029bd8}{Node}} ()
+\item 
+\mbox{\hyperlink{class_node_a0692b16d246460bf94c18d49592facdd}{Node}} (T data)
+\item 
+\mbox{\hyperlink{class_node_ae923d0417581dd19784d55b901f0f7f0}{\texorpdfstring{$\sim$}{\string~}\+Node}} ()
+\item 
+T \mbox{\hyperlink{class_node_a0c3315ee2e897e2a6e1c24aeca20aeb9}{get\+Data}} ()
+\item 
+\mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_node_a5b473954c3ca5d98e561c56728384db1}{get\+Next\+Node}} ()
+\item 
+\mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_node_a9dbc3f29e13977758c6ae2a86756c8ce}{get\+Prev\+Node}} ()
+\item 
+void \mbox{\hyperlink{class_node_a3955130f36c0a6d39641dee186caf2a3}{set\+Data}} (T data)
+\item 
+void \mbox{\hyperlink{class_node_a3282aba246c4a5fdb773d2ca257b8202}{set\+Next\+Node}} (\mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}next)
+\item 
+void \mbox{\hyperlink{class_node_ac56d2c3466cd4601467fa976218ad213}{set\+Prev\+Node}} (\mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}prev)
+\item 
+void \mbox{\hyperlink{class_node_ae51697d46c2d4d0c2b282b6b4e57cf02}{set\+Next\+Node\+Null}} ()
+\item 
+void \mbox{\hyperlink{class_node_a776823c9fd0e76be03f8f7e85a575fad}{set\+Prev\+Node\+Null}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class Node$<$ T $>$}
+
+
+Definition at line \mbox{\hyperlink{_node_8hpp_source_l00012}{12}} of file \mbox{\hyperlink{_node_8hpp_source}{Node.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_node_a0ac1d44cfe588be564acf25485029bd8}\label{class_node_a0ac1d44cfe588be564acf25485029bd8} 
+\index{Node$<$ T $>$@{Node$<$ T $>$}!Node@{Node}}
+\index{Node@{Node}!Node$<$ T $>$@{Node$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Node()}{Node()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_node}{Node}}$<$ T $>$\mbox{\hyperlink{class_node}{\+::\+Node}}}
+
+\doxylink{class_node}{Node} constructor function. Initializes the next and prev to nullptr. 
+
+Definition at line \mbox{\hyperlink{_node_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{_node_8cpp_source}{Node.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ this-\/>data\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00019\ \ \ \ \ this-\/>next\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00020\ \ \ \ \ this-\/>prev\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00021\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_node_a0692b16d246460bf94c18d49592facdd}\label{class_node_a0692b16d246460bf94c18d49592facdd} 
+\index{Node$<$ T $>$@{Node$<$ T $>$}!Node@{Node}}
+\index{Node@{Node}!Node$<$ T $>$@{Node$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Node()}{Node()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_node}{Node}}$<$ T $>$\mbox{\hyperlink{class_node}{\+::\+Node}} (\begin{DoxyParamCaption}\item[{T}]{data }\end{DoxyParamCaption})}
+
+\doxylink{class_node}{Node} constructor function 
+\begin{DoxyParams}{Parameters}
+{\em data} & -\/ the data that the node will hold. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_node_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{_node_8cpp_source}{Node.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ this-\/>data\ =\ data;}
+\DoxyCodeLine{00030\ \ \ \ \ this-\/>next\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00031\ \ \ \ \ this-\/>prev\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00032\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_node_ae923d0417581dd19784d55b901f0f7f0}\label{class_node_ae923d0417581dd19784d55b901f0f7f0} 
+\index{Node$<$ T $>$@{Node$<$ T $>$}!````~Node@{\texorpdfstring{$\sim$}{\string~}Node}}
+\index{````~Node@{\texorpdfstring{$\sim$}{\string~}Node}!Node$<$ T $>$@{Node$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Node()}{\string~Node()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_node}{Node}}$<$ T $>$\+::\texorpdfstring{$\sim$}{\string~}\mbox{\hyperlink{class_node}{Node}}}
+
+\doxylink{class_node}{Node} deconstructor function. Resets the next and prev to nullptr. 
+
+Definition at line \mbox{\hyperlink{_node_8cpp_source_l00039}{39}} of file \mbox{\hyperlink{_node_8cpp_source}{Node.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ this-\/>next\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00041\ \ \ \ \ this-\/>prev\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00042\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_node_a0c3315ee2e897e2a6e1c24aeca20aeb9}\label{class_node_a0c3315ee2e897e2a6e1c24aeca20aeb9} 
+\index{Node$<$ T $>$@{Node$<$ T $>$}!getData@{getData}}
+\index{getData@{getData}!Node$<$ T $>$@{Node$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getData()}{getData()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T \mbox{\hyperlink{class_node}{Node}}$<$ T $>$\+::get\+Data}
+
+
+
+Definition at line \mbox{\hyperlink{_node_8cpp_source_l00046}{46}} of file \mbox{\hyperlink{_node_8cpp_source}{Node.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00046\ \{\textcolor{keywordflow}{return}\ this-\/>data;\}}
+
+\end{DoxyCode}
+\Hypertarget{class_node_a5b473954c3ca5d98e561c56728384db1}\label{class_node_a5b473954c3ca5d98e561c56728384db1} 
+\index{Node$<$ T $>$@{Node$<$ T $>$}!getNextNode@{getNextNode}}
+\index{getNextNode@{getNextNode}!Node$<$ T $>$@{Node$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getNextNode()}{getNextNode()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_node}{Node}}$<$ T $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_node}{Node}}$<$ T $>$\+::get\+Next\+Node}
+
+
+
+Definition at line \mbox{\hyperlink{_node_8cpp_source_l00049}{49}} of file \mbox{\hyperlink{_node_8cpp_source}{Node.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00049\ \{\textcolor{keywordflow}{return}\ this-\/>next;\}}
+
+\end{DoxyCode}
+\Hypertarget{class_node_a9dbc3f29e13977758c6ae2a86756c8ce}\label{class_node_a9dbc3f29e13977758c6ae2a86756c8ce} 
+\index{Node$<$ T $>$@{Node$<$ T $>$}!getPrevNode@{getPrevNode}}
+\index{getPrevNode@{getPrevNode}!Node$<$ T $>$@{Node$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getPrevNode()}{getPrevNode()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_node}{Node}}$<$ T $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_node}{Node}}$<$ T $>$\+::get\+Prev\+Node}
+
+
+
+Definition at line \mbox{\hyperlink{_node_8cpp_source_l00052}{52}} of file \mbox{\hyperlink{_node_8cpp_source}{Node.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00052\ \{\textcolor{keywordflow}{return}\ this-\/>prev;\}}
+
+\end{DoxyCode}
+\Hypertarget{class_node_a3955130f36c0a6d39641dee186caf2a3}\label{class_node_a3955130f36c0a6d39641dee186caf2a3} 
+\index{Node$<$ T $>$@{Node$<$ T $>$}!setData@{setData}}
+\index{setData@{setData}!Node$<$ T $>$@{Node$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{setData()}{setData()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_node}{Node}}$<$ T $>$\+::set\+Data (\begin{DoxyParamCaption}\item[{T}]{data }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_node_8cpp_source_l00055}{55}} of file \mbox{\hyperlink{_node_8cpp_source}{Node.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00055\ \{this-\/>data\ =\ data;\}}
+
+\end{DoxyCode}
+\Hypertarget{class_node_a3282aba246c4a5fdb773d2ca257b8202}\label{class_node_a3282aba246c4a5fdb773d2ca257b8202} 
+\index{Node$<$ T $>$@{Node$<$ T $>$}!setNextNode@{setNextNode}}
+\index{setNextNode@{setNextNode}!Node$<$ T $>$@{Node$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{setNextNode()}{setNextNode()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_node}{Node}}$<$ T $>$\+::set\+Next\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_node}{Node}}$<$ T $>$ \texorpdfstring{$\ast$}{*}}]{next }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_node_8cpp_source_l00058}{58}} of file \mbox{\hyperlink{_node_8cpp_source}{Node.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00058\ \{this-\/>next\ =\ next;\}}
+
+\end{DoxyCode}
+\Hypertarget{class_node_ae51697d46c2d4d0c2b282b6b4e57cf02}\label{class_node_ae51697d46c2d4d0c2b282b6b4e57cf02} 
+\index{Node$<$ T $>$@{Node$<$ T $>$}!setNextNodeNull@{setNextNodeNull}}
+\index{setNextNodeNull@{setNextNodeNull}!Node$<$ T $>$@{Node$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{setNextNodeNull()}{setNextNodeNull()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_node}{Node}}$<$ T $>$\+::set\+Next\+Node\+Null}
+
+
+
+Definition at line \mbox{\hyperlink{_node_8cpp_source_l00064}{64}} of file \mbox{\hyperlink{_node_8cpp_source}{Node.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00064\ \{this-\/>next\ =\ \textcolor{keyword}{nullptr};\}}
+
+\end{DoxyCode}
+\Hypertarget{class_node_ac56d2c3466cd4601467fa976218ad213}\label{class_node_ac56d2c3466cd4601467fa976218ad213} 
+\index{Node$<$ T $>$@{Node$<$ T $>$}!setPrevNode@{setPrevNode}}
+\index{setPrevNode@{setPrevNode}!Node$<$ T $>$@{Node$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{setPrevNode()}{setPrevNode()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_node}{Node}}$<$ T $>$\+::set\+Prev\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_node}{Node}}$<$ T $>$ \texorpdfstring{$\ast$}{*}}]{prev }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_node_8cpp_source_l00061}{61}} of file \mbox{\hyperlink{_node_8cpp_source}{Node.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00061\ \{this-\/>prev\ =\ prev;\}}
+
+\end{DoxyCode}
+\Hypertarget{class_node_a776823c9fd0e76be03f8f7e85a575fad}\label{class_node_a776823c9fd0e76be03f8f7e85a575fad} 
+\index{Node$<$ T $>$@{Node$<$ T $>$}!setPrevNodeNull@{setPrevNodeNull}}
+\index{setPrevNodeNull@{setPrevNodeNull}!Node$<$ T $>$@{Node$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{setPrevNodeNull()}{setPrevNodeNull()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_node}{Node}}$<$ T $>$\+::set\+Prev\+Node\+Null}
+
+
+
+Definition at line \mbox{\hyperlink{_node_8cpp_source_l00067}{67}} of file \mbox{\hyperlink{_node_8cpp_source}{Node.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00067\ \{this-\/>prev\ =\ \textcolor{keyword}{nullptr};\}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Node.\+hpp\item 
+Node.\+cpp\end{DoxyCompactItemize}

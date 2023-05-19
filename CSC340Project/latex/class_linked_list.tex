@@ -1,0 +1,633 @@
+\doxysection{Linked\+List\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_linked_list}{}\label{class_linked_list}\index{LinkedList$<$ T $>$@{LinkedList$<$ T $>$}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_linked_list_a3c20fcfec867e867f541061a09fc640c}{Linked\+List}} ()
+\item 
+\mbox{\hyperlink{class_linked_list_a7c37609df3b83bc4eb0281b852f93fd7}{\texorpdfstring{$\sim$}{\string~}\+Linked\+List}} ()
+\begin{DoxyCompactList}\small\item\em Deconstructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_linked_list_a50c26292740c964ac7bef0e072868be1}{clear}} ()
+\begin{DoxyCompactList}\small\item\em This function removes all allocated memory used by\+Linked List. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_linked_list_ae0eea63e4ab6ec45da58dc483b6e38bb}{insert}} (T data)
+\item 
+void \mbox{\hyperlink{class_linked_list_aad1e9d6d7611d4f0bfde0e90da2c108b}{add}} (T data)
+\item 
+void \mbox{\hyperlink{class_linked_list_ab9aa6e03f271785f6b488d8c4cc3f3c7}{remove}} (T data)
+\item 
+\mbox{\hyperlink{class_node}{Node}}$<$ T $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_linked_list_a1c1f1804a30667efce2d25f761906241}{search}} (T data)
+\item 
+std\+::string \mbox{\hyperlink{class_linked_list_aeebcd8b3703828835222b185a1d9bb94}{to\+String}} ()
+\item 
+void \mbox{\hyperlink{class_linked_list_a71e13794909d5f5a8a86b787a43d705e}{merge\+Sort}} ()
+\item 
+void \mbox{\hyperlink{class_linked_list_aa644d66bfb879e71d1805a794a78b928}{bubble\+Sort}} ()
+\item 
+void \mbox{\hyperlink{class_linked_list_af3165014de430970859765572a8a11e3}{add\+From\+File}} (std\+::string file\+Name)
+\item 
+void \mbox{\hyperlink{class_linked_list_ae36396fece72d3c6202acc19487ae6ad}{merge\+Lists}} (const \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T $>$ \texorpdfstring{$\ast$}{*}list\+Two)
+\item 
+void \mbox{\hyperlink{class_linked_list_a9675767b81fb9f1d8799444e4ee7f43b}{print}} ()
+\begin{DoxyCompactList}\small\item\em This function prints each \doxylink{class_node}{Node}\textquotesingle{}s data in Linked List to console. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_node}{Node}}$<$ T $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_linked_list_aef3b681c9f6c9cbabd74f80e4fd0b610}{binary\+Search}} (T target)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class Linked\+List$<$ T $>$}
+
+
+Definition at line \mbox{\hyperlink{_linked_list_8hpp_source_l00016}{16}} of file \mbox{\hyperlink{_linked_list_8hpp_source}{Linked\+List.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_linked_list_a3c20fcfec867e867f541061a09fc640c}\label{class_linked_list_a3c20fcfec867e867f541061a09fc640c} 
+\index{LinkedList$<$ T $>$@{LinkedList$<$ T $>$}!LinkedList@{LinkedList}}
+\index{LinkedList@{LinkedList}!LinkedList$<$ T $>$@{LinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{LinkedList()}{LinkedList()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T $>$\mbox{\hyperlink{class_linked_list}{\+::\+Linked\+List}}}
+
+Constructor 
+
+Definition at line \mbox{\hyperlink{_linked_list_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{_linked_list_8cpp_source}{Linked\+List.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ this-\/>head\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00015\ \ \ \ \ this-\/>tail\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00016\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_linked_list_a7c37609df3b83bc4eb0281b852f93fd7}\label{class_linked_list_a7c37609df3b83bc4eb0281b852f93fd7} 
+\index{LinkedList$<$ T $>$@{LinkedList$<$ T $>$}!````~LinkedList@{\texorpdfstring{$\sim$}{\string~}LinkedList}}
+\index{````~LinkedList@{\texorpdfstring{$\sim$}{\string~}LinkedList}!LinkedList$<$ T $>$@{LinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}LinkedList()}{\string~LinkedList()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T $>$\+::\texorpdfstring{$\sim$}{\string~}\mbox{\hyperlink{class_linked_list}{Linked\+List}}}
+
+
+
+Deconstructor. 
+
+
+
+Definition at line \mbox{\hyperlink{_linked_list_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{_linked_list_8cpp_source}{Linked\+List.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{class_linked_list_a50c26292740c964ac7bef0e072868be1}{clear}}();}
+\DoxyCodeLine{00021\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_linked_list_aad1e9d6d7611d4f0bfde0e90da2c108b}\label{class_linked_list_aad1e9d6d7611d4f0bfde0e90da2c108b} 
+\index{LinkedList$<$ T $>$@{LinkedList$<$ T $>$}!add@{add}}
+\index{add@{add}!LinkedList$<$ T $>$@{LinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T $>$\+::add (\begin{DoxyParamCaption}\item[{T}]{data }\end{DoxyParamCaption})}
+
+This function adds a \doxylink{class_node}{Node} containing the data passed 
+\begin{DoxyParams}{Parameters}
+{\em data} & -\/ the data a \doxylink{class_node}{Node} contains \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_linked_list_8cpp_source_l00066}{66}} of file \mbox{\hyperlink{_linked_list_8cpp_source}{Linked\+List.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{class_node}{Node<T>}}*\ newNode\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_node}{Node<T>}}(data);}
+\DoxyCodeLine{00068\ \ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>head\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ this-\/>head\ =\ newNode;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ this-\/>tail\ =\ newNode;}
+\DoxyCodeLine{00072\ \ \ \ \ \}}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ this-\/>tail-\/>setNextNode(newNode);}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ newNode-\/>setPrevNode(tail);}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ this-\/>tail\ =\ newNode;}
+\DoxyCodeLine{00077\ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_linked_list_af3165014de430970859765572a8a11e3}\label{class_linked_list_af3165014de430970859765572a8a11e3} 
+\index{LinkedList$<$ T $>$@{LinkedList$<$ T $>$}!addFromFile@{addFromFile}}
+\index{addFromFile@{addFromFile}!LinkedList$<$ T $>$@{LinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{addFromFile()}{addFromFile()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T $>$\+::add\+From\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Name }\end{DoxyParamCaption})}
+
+This function adds data from a txt file into Linked List 
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & -\/ name of the txt file. File name must include .txt extension \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_linked_list_8cpp_source_l00268}{268}} of file \mbox{\hyperlink{_linked_list_8cpp_source}{Linked\+List.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00269\ \ \ \ \ std::ifstream\ file;}
+\DoxyCodeLine{00270\ \ \ \ \ T\ data;}
+\DoxyCodeLine{00271\ \ \ \ \ }
+\DoxyCodeLine{00272\ \ \ \ \ file.open(fileName);}
+\DoxyCodeLine{00273\ \ \ \ \ }
+\DoxyCodeLine{00274\ \ \ \ \ \textcolor{keywordflow}{if}\ (file.peek()\ ==\ std::ifstream::traits\_type::eof())\ \{}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Error:\ File\ is\ empty"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{00277\ \ \ \ \ \}}
+\DoxyCodeLine{00278\ \ \ \ \ }
+\DoxyCodeLine{00279\ \ \ \ \ \textcolor{keywordflow}{if}\ (!file.is\_open())\ \{}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Error\ opening\ file"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{00282\ \ \ \ \ \}}
+\DoxyCodeLine{00283\ \ \ \ \ }
+\DoxyCodeLine{00284\ \ \ \ \ \textcolor{keywordflow}{while}\ (file\ >>\ data)\ \{}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (file.eof())\ \{}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{class_linked_list_aad1e9d6d7611d4f0bfde0e90da2c108b}{add}}(data);}
+\DoxyCodeLine{00290\ \ \ \ \ \}}
+\DoxyCodeLine{00291\ \ \ \ \ }
+\DoxyCodeLine{00292\ \ \ \ \ \textcolor{keywordflow}{if}\ (!file.eof())\ \{}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Error\ reaching\ end\ of\ file"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{00295\ \ \ \ \ \}}
+\DoxyCodeLine{00296\ \ \ \ \ }
+\DoxyCodeLine{00297\ \ \ \ \ file.close();}
+\DoxyCodeLine{00298\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_linked_list_aef3b681c9f6c9cbabd74f80e4fd0b610}\label{class_linked_list_aef3b681c9f6c9cbabd74f80e4fd0b610} 
+\index{LinkedList$<$ T $>$@{LinkedList$<$ T $>$}!binarySearch@{binarySearch}}
+\index{binarySearch@{binarySearch}!LinkedList$<$ T $>$@{LinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{binarySearch()}{binarySearch()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_node}{Node}}$<$ T $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T $>$\+::binary\+Search (\begin{DoxyParamCaption}\item[{T}]{target }\end{DoxyParamCaption})}
+
+Searches for a value using binary search. Requires the list to be sorted to work.
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & The value to look for. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_linked_list_8cpp_source_l00345}{345}} of file \mbox{\hyperlink{_linked_list_8cpp_source}{Linked\+List.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00346\ \ \ \ \ \mbox{\hyperlink{class_node}{Node<T>}}*\ searchHead\ =\ this-\/>head;}
+\DoxyCodeLine{00347\ \ \ \ \ \mbox{\hyperlink{class_node}{Node<T>}}*\ searchTail\ =\ this-\/>tail;}
+\DoxyCodeLine{00348\ \ \ \ \ \mbox{\hyperlink{class_node}{Node<T>}}*\ searchMid\ =\ findMid(searchHead,\ searchTail);}
+\DoxyCodeLine{00349\ \ \ \ \ \textcolor{keywordflow}{if}\ (searchHead)\ \{}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (searchHead-\/>getData()\ <=\ searchTail-\/>getData())\ \{}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (target\ ==\ searchHead-\/>getData())\ \{}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ searchHead;}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (target\ ==\ searchMid-\/>getData())\ \{}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ searchMid;}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (target\ ==\ searchTail-\/>getData())\ \{}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ searchTail;}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (target\ <\ searchMid-\/>getData())\ \{}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ searchHead\ =\ searchHead-\/>getNextNode();}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ searchTail\ =\ searchMid-\/>getPrevNode();}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ searchMid\ =\ findMid(searchHead,\ searchTail);}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (target\ <\ searchMid-\/>getData())\ \{}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ searchHead\ =\ searchMid-\/>getNextNode();}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ searchTail\ =\ searchTail-\/>getPrevNode();}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ searchMid\ =\ findMid(searchHead,\ searchTail);}
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00372\ \ \ \ \ \}}
+\DoxyCodeLine{00373\ \ \ \ \ }
+\DoxyCodeLine{00374\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00375\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_linked_list_aa644d66bfb879e71d1805a794a78b928}\label{class_linked_list_aa644d66bfb879e71d1805a794a78b928} 
+\index{LinkedList$<$ T $>$@{LinkedList$<$ T $>$}!bubbleSort@{bubbleSort}}
+\index{bubbleSort@{bubbleSort}!LinkedList$<$ T $>$@{LinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{bubbleSort()}{bubbleSort()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T $>$\+::bubble\+Sort}
+
+Sorts the \doxylink{class_linked_list}{Linked\+List} using the bubble sort algorithm. 
+
+Definition at line \mbox{\hyperlink{_linked_list_8cpp_source_l00239}{239}} of file \mbox{\hyperlink{_linked_list_8cpp_source}{Linked\+List.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00240\ \ \ \ \ \textcolor{comment}{//\ do\ not\ sort\ if\ empty\ or\ one}}
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>head\ ==\ \textcolor{keyword}{nullptr}\ ||\ this-\/>head-\/>getNextNode()\ ==\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00243\ \ \ \ \ }
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keywordtype}{bool}\ swap;}
+\DoxyCodeLine{00245\ \ \ \ \ \mbox{\hyperlink{class_node}{Node<T>}}*\ current\ =\ this-\/>head;}
+\DoxyCodeLine{00246\ \ \ \ \ \mbox{\hyperlink{class_node}{Node<T>}}*\ sorttail\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00247\ \ \ \ \ }
+\DoxyCodeLine{00248\ \ \ \ \ \textcolor{keywordflow}{while}\ (current\ !=\ sorttail)\{}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ swap\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ Node\ <T>*\ current2\ =\ this-\/>head;}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (current2-\/>getNextNode\ ()\ !=\ sorttail)\{}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (current2-\/>getData()\ >\ current2-\/>getNextNode()-\/>getData())\{}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp\ =\ current2\ -\/>\ getData();}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ current2-\/>setData(current2-\/>getNextNode()-\/>getData());}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ current2-\/>getNextNode()-\/>setData(temp);}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ swap\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ current2\ =\ current2-\/>getNextNode();}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ sorttail\ =\ current2;\ \textcolor{comment}{//\ update\ tail\ to\ last\ swap}}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!swap)}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ \textcolor{comment}{//\ if\ no\ swap\ the\ list\ is\ already\ sorted}}
+\DoxyCodeLine{00264\ \ \ \ \ \}}
+\DoxyCodeLine{00265\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_linked_list_a50c26292740c964ac7bef0e072868be1}\label{class_linked_list_a50c26292740c964ac7bef0e072868be1} 
+\index{LinkedList$<$ T $>$@{LinkedList$<$ T $>$}!clear@{clear}}
+\index{clear@{clear}!LinkedList$<$ T $>$@{LinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T $>$\+::clear}
+
+
+
+This function removes all allocated memory used by\+Linked List. 
+
+
+
+Definition at line \mbox{\hyperlink{_linked_list_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{_linked_list_8cpp_source}{Linked\+List.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_node}{Node<T>}}*\ nodeToDelete\ =\ head;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordflow}{while}\ (head\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ head\ =\ head-\/>getNextNode();}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ nodeToDelete;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ nodeToDelete\ =\ head;}
+\DoxyCodeLine{00030\ \ \ \ \ \}}
+\DoxyCodeLine{00031\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_linked_list_ae0eea63e4ab6ec45da58dc483b6e38bb}\label{class_linked_list_ae0eea63e4ab6ec45da58dc483b6e38bb} 
+\index{LinkedList$<$ T $>$@{LinkedList$<$ T $>$}!insert@{insert}}
+\index{insert@{insert}!LinkedList$<$ T $>$@{LinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T $>$\+::insert (\begin{DoxyParamCaption}\item[{T}]{data }\end{DoxyParamCaption})}
+
+This function inserts a \doxylink{class_node}{Node} that contains the specific data in Linked List in order 
+\begin{DoxyParams}{Parameters}
+{\em data} & -\/ the data a \doxylink{class_node}{Node} contains \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_linked_list_8cpp_source_l00034}{34}} of file \mbox{\hyperlink{_linked_list_8cpp_source}{Linked\+List.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{class_node}{Node<T>}}*\ newNode\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_node}{Node<T>}}(data);}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>head\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ this-\/>head\ =\ newNode;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ this-\/>tail\ =\ newNode;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00040\ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ <=\ this-\/>head-\/>getData())\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ newNode-\/>setNextNode(head);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ this-\/>head-\/>setPrevNode(newNode);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ this-\/>head\ =\ newNode;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00046\ \ \ \ \ \}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ >=\ tail-\/>getData())\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ newNode-\/>setPrevNode(tail);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ this-\/>tail-\/>setNextNode(newNode);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ this-\/>tail\ =\ newNode;}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{class_node}{Node<T>}}*\ temp\ =\ this-\/>head;}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{while}\ (temp-\/>getNextNode()\ !=\ \textcolor{keyword}{nullptr}\ \&\&\ temp-\/>getNextNode()-\/>getData()\ <\ data)\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ temp\ =\ temp-\/>getNextNode();}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ newNode-\/>setNextNode(temp-\/>getNextNode());}
+\DoxyCodeLine{00060\ \ \ \ \ temp-\/>setNextNode(newNode);}
+\DoxyCodeLine{00061\ \ \ \ \ newNode-\/>setPrevNode(temp);}
+\DoxyCodeLine{00062\ \ \ \ \ newNode-\/>getNextNode()-\/>setPrevNode(newNode);}
+\DoxyCodeLine{00063\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_linked_list_ae36396fece72d3c6202acc19487ae6ad}\label{class_linked_list_ae36396fece72d3c6202acc19487ae6ad} 
+\index{LinkedList$<$ T $>$@{LinkedList$<$ T $>$}!mergeLists@{mergeLists}}
+\index{mergeLists@{mergeLists}!LinkedList$<$ T $>$@{LinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{mergeLists()}{mergeLists()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T $>$\+::merge\+Lists (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T $>$ \texorpdfstring{$\ast$}{*}}]{list\+Two }\end{DoxyParamCaption})}
+
+Modified the \doxylink{class_linked_list}{Linked\+List} from which it was called. Calling \doxylink{class_linked_list}{Linked\+List} will be modified and sorted.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list\+Two} & Does not need to be sorted and remains unchanged. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_linked_list_8cpp_source_l00307}{307}} of file \mbox{\hyperlink{_linked_list_8cpp_source}{Linked\+List.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00308\ \ \ \ \ \textcolor{keywordflow}{if}\ (!this-\/>head\ \&\&\ !listTwo-\/>head)\ \{}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00310\ \ \ \ \ \}}
+\DoxyCodeLine{00311\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_linked_list_a71e13794909d5f5a8a86b787a43d705e}{mergeSort}}();}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_node}{Node<T>}}*\ temp\ =\ listTwo-\/>head;}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (temp\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{class_linked_list_ae0eea63e4ab6ec45da58dc483b6e38bb}{insert}}(temp-\/>getData());}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \ temp\ =\ temp-\/>getNextNode();}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00318\ \ \ \ \ \}}
+\DoxyCodeLine{00319\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_linked_list_a71e13794909d5f5a8a86b787a43d705e}\label{class_linked_list_a71e13794909d5f5a8a86b787a43d705e} 
+\index{LinkedList$<$ T $>$@{LinkedList$<$ T $>$}!mergeSort@{mergeSort}}
+\index{mergeSort@{mergeSort}!LinkedList$<$ T $>$@{LinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{mergeSort()}{mergeSort()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T $>$\+::merge\+Sort}
+
+Sorts the \doxylink{class_linked_list}{Linked\+List} using the merge sort algorithm. 
+
+Definition at line \mbox{\hyperlink{_linked_list_8cpp_source_l00142}{142}} of file \mbox{\hyperlink{_linked_list_8cpp_source}{Linked\+List.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{comment}{//\ base\ case:\ 1\ or\ 0\ Nodes}}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>head\ ==\ \textcolor{keyword}{nullptr}\ ||\ this-\/>head-\/>getNextNode()\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00146\ \ \ \ \ \}}
+\DoxyCodeLine{00147\ \ \ \ \ }
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{comment}{//\ split\ the\ LinkedList\ in\ half}}
+\DoxyCodeLine{00149\ \ \ \ \ \mbox{\hyperlink{class_node}{Node<T>}}*\ subHead1\ =\ this-\/>head;}
+\DoxyCodeLine{00150\ \ \ \ \ \mbox{\hyperlink{class_node}{Node<T>}}*\ subHead2\ =\ findMid(this-\/>head,\ this-\/>tail);}
+\DoxyCodeLine{00151\ \ \ \ \ \mbox{\hyperlink{class_node}{Node<T>}}*\ subTail1\ =\ subHead2-\/>getPrevNode();}
+\DoxyCodeLine{00152\ \ \ \ \ \mbox{\hyperlink{class_node}{Node<T>}}*\ subTail2\ =\ this-\/>tail;}
+\DoxyCodeLine{00153\ \ \ \ \ }
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{comment}{//\ detach\ the\ two\ halves}}
+\DoxyCodeLine{00155\ \ \ \ \ subTail1-\/>setNextNodeNull();}
+\DoxyCodeLine{00156\ \ \ \ \ subHead2-\/>setPrevNodeNull();}
+\DoxyCodeLine{00157\ \ \ \ \ }
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{comment}{//\ recurse\ first\ half}}
+\DoxyCodeLine{00159\ \ \ \ \ this-\/>head\ =\ subHead1;}
+\DoxyCodeLine{00160\ \ \ \ \ this-\/>tail\ =\ subTail1;}
+\DoxyCodeLine{00161\ \ \ \ \ \mbox{\hyperlink{class_linked_list_a71e13794909d5f5a8a86b787a43d705e}{mergeSort}}();}
+\DoxyCodeLine{00162\ \ \ \ \ subHead1\ =\ this-\/>head;}
+\DoxyCodeLine{00163\ \ \ \ \ subTail1\ =\ this-\/>tail;}
+\DoxyCodeLine{00164\ \ \ \ \ }
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{comment}{//\ recurse\ second\ half}}
+\DoxyCodeLine{00166\ \ \ \ \ this-\/>head\ =\ subHead2;}
+\DoxyCodeLine{00167\ \ \ \ \ this-\/>tail\ =\ subTail2;}
+\DoxyCodeLine{00168\ \ \ \ \ \mbox{\hyperlink{class_linked_list_a71e13794909d5f5a8a86b787a43d705e}{mergeSort}}();}
+\DoxyCodeLine{00169\ \ \ \ \ subHead2\ =\ this-\/>head;}
+\DoxyCodeLine{00170\ \ \ \ \ subTail2\ =\ this-\/>tail;}
+\DoxyCodeLine{00171\ \ \ \ \ }
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{comment}{//\ merge\ both\ halves}}
+\DoxyCodeLine{00173\ \ \ \ \ this-\/>head\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00174\ \ \ \ \ \mbox{\hyperlink{class_node}{Node<T>}}*\ nodeptr\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00175\ \ \ \ \ }
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{comment}{//\ compare\ head\ of\ both\ halves}}
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keywordflow}{while}\ (subHead1\ !=\ \textcolor{keyword}{nullptr}\ \&\&\ subHead2\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (subHead1-\/>getData()\ <\ subHead2-\/>getData())\ \{}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>head\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>head\ =\ subHead1;}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nodeptr\ =\ subHead1;}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nodeptr-\/>setNextNode(subHead1);}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ subHead1-\/>setPrevNode(nodeptr);}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nodeptr\ =\ subHead1;}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ subHead1\ =\ subHead1-\/>getNextNode();}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>head\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>head\ =\ subHead2;}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nodeptr\ =\ subHead2;}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nodeptr-\/>setNextNode(subHead2);}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ subHead1-\/>setPrevNode(nodeptr);}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nodeptr\ =\ subHead2;}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ subHead2\ =\ subHead2-\/>getNextNode();}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00202\ \ \ \ \ \}}
+\DoxyCodeLine{00203\ \ \ \ \ }
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{comment}{//\ add\ the\ rest\ of\ first\ half\ to\ the\ main\ LinkedList}}
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{keywordflow}{while}\ (subHead1\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>head\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>head\ =\ subHead1;}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ nodeptr\ =\ subHead1;}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ nodeptr-\/>setNextNode(subHead1);}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ subHead1-\/>setPrevNode(nodeptr);}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ nodeptr\ =\ subHead1;}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ subHead1\ =\ subHead1-\/>getNextNode();}
+\DoxyCodeLine{00216\ \ \ \ \ \}}
+\DoxyCodeLine{00217\ \ \ \ \ }
+\DoxyCodeLine{00218\ \ \ \ \ \textcolor{comment}{//\ add\ the\ rest\ of\ second\ half\ to\ the\ main\ LinkedList}}
+\DoxyCodeLine{00219\ \ \ \ \ \textcolor{keywordflow}{while}\ (subHead2\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>head\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>head\ =\ subHead2;}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ nodeptr\ =\ subHead2;}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ nodeptr-\/>setNextNode(subHead2);}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ subHead2-\/>setPrevNode(nodeptr);}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ nodeptr\ =\ subHead2;}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ subHead2\ =\ subHead2-\/>getNextNode();}
+\DoxyCodeLine{00230\ \ \ \ \ \}}
+\DoxyCodeLine{00231\ \ \ \ \ }
+\DoxyCodeLine{00232\ \ \ \ \ this-\/>tail\ =\ nodeptr;}
+\DoxyCodeLine{00233\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_linked_list_a9675767b81fb9f1d8799444e4ee7f43b}\label{class_linked_list_a9675767b81fb9f1d8799444e4ee7f43b} 
+\index{LinkedList$<$ T $>$@{LinkedList$<$ T $>$}!print@{print}}
+\index{print@{print}!LinkedList$<$ T $>$@{LinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T $>$\+::print}
+
+
+
+This function prints each \doxylink{class_node}{Node}\textquotesingle{}s data in Linked List to console. 
+
+
+
+Definition at line \mbox{\hyperlink{_linked_list_8cpp_source_l00322}{322}} of file \mbox{\hyperlink{_linked_list_8cpp_source}{Linked\+List.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00323\ \ \ \ \ \mbox{\hyperlink{class_node}{Node<T>}}*\ temp\ =\ this-\/>head;}
+\DoxyCodeLine{00324\ \ \ \ \ }
+\DoxyCodeLine{00325\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>head\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}The\ linked\ list\ is\ empty."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00328\ \ \ \ \ \}}
+\DoxyCodeLine{00329\ \ \ \ \ }
+\DoxyCodeLine{00330\ \ \ \ \ \textcolor{keywordflow}{while}\ (temp\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ std::\ cout\ <<\ temp-\/>getData()\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ temp\ =\ temp-\/>getNextNode();}
+\DoxyCodeLine{00333\ \ \ \ \ \}}
+\DoxyCodeLine{00334\ \ \ \ \ }
+\DoxyCodeLine{00335\ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00336\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_linked_list_ab9aa6e03f271785f6b488d8c4cc3f3c7}\label{class_linked_list_ab9aa6e03f271785f6b488d8c4cc3f3c7} 
+\index{LinkedList$<$ T $>$@{LinkedList$<$ T $>$}!remove@{remove}}
+\index{remove@{remove}!LinkedList$<$ T $>$@{LinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T $>$\+::remove (\begin{DoxyParamCaption}\item[{T}]{data }\end{DoxyParamCaption})}
+
+This function removes a \doxylink{class_node}{Node} from the Linked List containing the data passed 
+\begin{DoxyParams}{Parameters}
+{\em data} & -\/ the data a \doxylink{class_node}{Node} contains \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_linked_list_8cpp_source_l00081}{81}} of file \mbox{\hyperlink{_linked_list_8cpp_source}{Linked\+List.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{class_node}{Node<T>}}*\ nodeToDelete\ =\ \mbox{\hyperlink{class_linked_list_a1c1f1804a30667efce2d25f761906241}{search}}(data);}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordflow}{if}\ (nodeToDelete\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nodeToDelete\ ==\ this-\/>head)\ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>head\ =\ head-\/>getNextNode();}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>head-\/>setPrevNodeNull();}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (nodeToDelete\ ==\ this-\/>tail)\ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>tail\ =\ tail-\/>getPrevNode();}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>tail-\/>setNextNodeNull();}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_node}{Node<T>}}*\ prevNode\ =\ nodeToDelete-\/>getPrevNode();}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_node}{Node<T>}}*\ nextNode\ =\ nodeToDelete-\/>getNextNode();}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ prevNode-\/>setNextNode(nextNode);}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ nextNode-\/>setPrevNode(prevNode);}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ nodeToDelete;}
+\DoxyCodeLine{00099\ \ \ \ \ \}}
+\DoxyCodeLine{00100\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_linked_list_a1c1f1804a30667efce2d25f761906241}\label{class_linked_list_a1c1f1804a30667efce2d25f761906241} 
+\index{LinkedList$<$ T $>$@{LinkedList$<$ T $>$}!search@{search}}
+\index{search@{search}!LinkedList$<$ T $>$@{LinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{search()}{search()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_node}{Node}}$<$ T $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T $>$\+::search (\begin{DoxyParamCaption}\item[{T}]{data }\end{DoxyParamCaption})}
+
+This function searches for a \doxylink{class_node}{Node} containing the data passed and returns a reference to \doxylink{class_node}{Node} 
+\begin{DoxyParams}{Parameters}
+{\em data} & -\/ the data a \doxylink{class_node}{Node} contains \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_node}{Node} reference to \doxylink{class_node}{Node} that contains data passed, if not found, returns nullptr 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_linked_list_8cpp_source_l00103}{103}} of file \mbox{\hyperlink{_linked_list_8cpp_source}{Linked\+List.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \mbox{\hyperlink{class_node}{Node<T>}}*\ temp\ =\ this-\/>head;}
+\DoxyCodeLine{00105\ \ \ \ \ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordflow}{while}\ (temp)\ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (temp-\/>getData()\ ==\ data)\ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ temp;}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ temp\ =\ temp-\/>getNextNode();}
+\DoxyCodeLine{00112\ \ \ \ \ \}}
+\DoxyCodeLine{00113\ \ \ \ \ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00115\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_linked_list_aeebcd8b3703828835222b185a1d9bb94}\label{class_linked_list_aeebcd8b3703828835222b185a1d9bb94} 
+\index{LinkedList$<$ T $>$@{LinkedList$<$ T $>$}!toString@{toString}}
+\index{toString@{toString}!LinkedList$<$ T $>$@{LinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+std\+::string \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T $>$\+::to\+String}
+
+Returns the string representation of the \doxylink{class_linked_list}{Linked\+List} in the form of an array. 
+
+Definition at line \mbox{\hyperlink{_linked_list_8cpp_source_l00122}{122}} of file \mbox{\hyperlink{_linked_list_8cpp_source}{Linked\+List.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \mbox{\hyperlink{class_node}{Node<T>}}*\ temp\ =\ this-\/>head;}
+\DoxyCodeLine{00124\ \ \ \ \ std::string\ output\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00125\ \ \ \ \ std::string\ quote\ =\ (\textcolor{keyword}{typeid}(T).name()\ ==\ \textcolor{keyword}{typeid}(std::string(\textcolor{stringliteral}{"{}"{}})).name())\ ?\ \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}}\ :\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00126\ \ \ \ \ }
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordflow}{while}\ (temp\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ T\ val\ =\ temp-\/>getData();}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ output\ +=\ quote\ +\ to\_string(val)\ +\ quote;}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ temp\ =\ temp-\/>getNextNode();}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (temp\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ output\ +=\ \textcolor{stringliteral}{"{},\ "{}};}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00134\ \ \ \ \ \}}
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}\{"{}}\ +\ output\ +\ \textcolor{stringliteral}{"{}\}"{}};}
+\DoxyCodeLine{00136\ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Linked\+List.\+hpp\item 
+Linked\+List.\+cpp\end{DoxyCompactItemize}

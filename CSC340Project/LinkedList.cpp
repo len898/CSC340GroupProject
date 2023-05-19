@@ -1,8 +1,9 @@
-//  LinkedList.cpp
-//  CSC340GP
-//
-//  Created by e on 5/13/23.
-//
+/**
+ * A LinkedList class used to store multiple elements.
+ * Dynamically links elements together so that they
+ * do not need to be next to sequential in memory.
+ */
+
 #ifndef LINKEDLIST_CPP
 #define LINKEDLIST_CPP
 #include <fstream>
@@ -10,8 +11,8 @@
 
 template<class T>
 LinkedList<T>::LinkedList(){
-    head = nullptr;
-    tail = nullptr;
+    this->head = nullptr;
+    this->tail = nullptr;
 }
 
 template<class T>
@@ -29,54 +30,50 @@ void LinkedList<T>::clear() {
     }
 }
 
-//Update with binary search
 template<class T>
 void LinkedList<T>::insert(T data) {
     Node<T>* newNode = new Node<T>(data);
-    if (head == nullptr) {
-        head = newNode;
-        tail = newNode;
+    if (this->head == nullptr) {
+        this->head = newNode;
+        this->tail = newNode;
         return;
     }
-    if (data <= head->getData()) {
+    if (data <= this->head->getData()) {
         newNode->setNextNode(head);
-        head->setPrevNode(newNode);
-        head = newNode;
+        this->head->setPrevNode(newNode);
+        this->head = newNode;
         return;
     }
     if (data >= tail->getData()) {
         newNode->setPrevNode(tail);
-        tail->setNextNode(newNode);
-        tail = newNode;
+        this->tail->setNextNode(newNode);
+        this->tail = newNode;
         return;
     }
-    Node<T>* temp = head;
+    Node<T>* temp = this->head;
     while (temp->getNextNode() != nullptr && temp->getNextNode()->getData() < data) {
         temp = temp->getNextNode();
-
+        
     }
     
-    tail->setNextNode(newNode);
-    newNode->setPrevNode(tail);
-    tail = newNode;
-//    newNode->setNextNode(temp->getNextNode());
-//    temp->setNextNode(newNode);
-//    newNode->setPrevNode(temp);
-//    newNode->getNextNode()->setPrevNode(newNode);
+    newNode->setNextNode(temp->getNextNode());
+    temp->setNextNode(newNode);
+    newNode->setPrevNode(temp);
+    newNode->getNextNode()->setPrevNode(newNode);
 }
 
 template<class T>
 void LinkedList<T>::add(T data) {
     Node<T>* newNode = new Node<T>(data);
-
-    if (head == nullptr) {
-        head = newNode;
-        tail = newNode;
+    
+    if (this->head == nullptr) {
+        this->head = newNode;
+        this->tail = newNode;
     }
     else {
-        tail->setNextNode(newNode);
+        this->tail->setNextNode(newNode);
         newNode->setPrevNode(tail);
-        tail = newNode;
+        this->tail = newNode;
     }
 }
 
@@ -84,13 +81,13 @@ template<class T>
 void LinkedList<T>::remove(T data) {
     Node<T>* nodeToDelete = search(data);
     if (nodeToDelete != nullptr) {
-        if (nodeToDelete == head) {
-            head = head->getNextNode();
-            head->setPrevNodeNull();
+        if (nodeToDelete == this->head) {
+            this->head = head->getNextNode();
+            this->head->setPrevNodeNull();
         }
-        else if (nodeToDelete == tail) {
-            tail = tail->getPrevNode();
-            tail->setNextNodeNull();
+        else if (nodeToDelete == this->tail) {
+            this->tail = tail->getPrevNode();
+            this->tail->setNextNodeNull();
         }
         else {
             Node<T>* prevNode = nodeToDelete->getPrevNode();
@@ -104,29 +101,31 @@ void LinkedList<T>::remove(T data) {
 
 template<class T>
 Node<T>* LinkedList<T>::search(T data) {
-    Node<T>* temp = head;
-
+    Node<T>* temp = this->head;
+    
     while (temp) {
         if (temp->getData() == data) {
             return temp;
         }
-
+        
         temp = temp->getNextNode();
     }
-
+    
     return nullptr;
 }
 
+/**
+ * Returns the string representation of the LinkedList
+ * in the form of an array.
+ */
 template<class T>
 std::string LinkedList<T>::toString() {
-    std::string stringType = "NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE";
-
     Node<T>* temp = this->head;
     std::string output = "";
-
+    std::string quote = (typeid(T).name() == typeid(std::string("")).name()) ? "\"" : "";
+    
     while (temp != nullptr) {
         T val = temp->getData();
-        std::string quote = (typeid(T).name() == stringType) ? "\"" : "";
         output += quote + to_string(val) + quote;
         temp = temp->getNextNode();
         if (temp != nullptr) {
@@ -136,43 +135,49 @@ std::string LinkedList<T>::toString() {
     return "{" + output + "}";
 }
 
+/**
+ * Sorts the LinkedList using the merge sort algorithm.
+ */
 template<class T>
 void LinkedList<T>::mergeSort() {
-    if (head == nullptr || head->getNextNode() == nullptr) {
+    // base case: 1 or 0 Nodes
+    if (this->head == nullptr || this->head->getNextNode() == nullptr) {
         return;
     }
-
-    Node<T>* subHead1 = head;
-    Node<T>* subHead2 = head;
-
-    int size = 0;
-    while (subHead1 != nullptr) {
-        subHead1 = subHead1->getNextNode();
-        if (++size % 2 == 0) {
-            subHead2 = subHead2->getNextNode();
-        }
-    }
-
-    subHead1 = head;
-
-    subHead2->getPrevNode()->setNextNodeNull();
+    
+    // split the LinkedList in half
+    Node<T>* subHead1 = this->head;
+    Node<T>* subHead2 = findMid(this->head, this->tail);
+    Node<T>* subTail1 = subHead2->getPrevNode();
+    Node<T>* subTail2 = this->tail;
+    
+    // detach the two halves
+    subTail1->setNextNodeNull();
     subHead2->setPrevNodeNull();
-
-    head = subHead1;
+    
+    // recurse first half
+    this->head = subHead1;
+    this->tail = subTail1;
     mergeSort();
-    subHead1 = head;
-
-    head = subHead2;
+    subHead1 = this->head;
+    subTail1 = this->tail;
+    
+    // recurse second half
+    this->head = subHead2;
+    this->tail = subTail2;
     mergeSort();
-    subHead2 = head;
-
-    head = nullptr;
+    subHead2 = this->head;
+    subTail2 = this->tail;
+    
+    // merge both halves
+    this->head = nullptr;
     Node<T>* nodeptr = nullptr;
-
+    
+    // compare head of both halves
     while (subHead1 != nullptr && subHead2 != nullptr) {
         if (subHead1->getData() < subHead2->getData()) {
-            if (head == nullptr) {
-                head = subHead1;
+            if (this->head == nullptr) {
+                this->head = subHead1;
                 nodeptr = subHead1;
             }
             else {
@@ -183,8 +188,8 @@ void LinkedList<T>::mergeSort() {
             subHead1 = subHead1->getNextNode();
         }
         else {
-            if (head == nullptr) {
-                head = subHead2;
+            if (this->head == nullptr) {
+                this->head = subHead2;
                 nodeptr = subHead2;
             }
             else {
@@ -195,10 +200,11 @@ void LinkedList<T>::mergeSort() {
             subHead2 = subHead2->getNextNode();
         }
     }
-
+    
+    // add the rest of first half to the main LinkedList
     while (subHead1 != nullptr) {
-        if (head == nullptr) {
-            head = subHead1;
+        if (this->head == nullptr) {
+            this->head = subHead1;
             nodeptr = subHead1;
         }
         else {
@@ -208,10 +214,11 @@ void LinkedList<T>::mergeSort() {
         }
         subHead1 = subHead1->getNextNode();
     }
-
+    
+    // add the rest of second half to the main LinkedList
     while (subHead2 != nullptr) {
-        if (head == nullptr) {
-            head = subHead2;
+        if (this->head == nullptr) {
+            this->head = subHead2;
             nodeptr = subHead2;
         }
         else {
@@ -221,45 +228,44 @@ void LinkedList<T>::mergeSort() {
         }
         subHead2 = subHead2->getNextNode();
     }
+    
+    this->tail = nodeptr;
+}
 
-    tail = nodeptr;
+/**
+ * Sorts the LinkedList using the bubble sort algorithm.
+ */
+template<class T>
+void LinkedList<T>::bubbleSort() {
+    // do not sort if empty or one
+    if (this->head == nullptr || this->head->getNextNode() == nullptr)
+        return;
+    
+    bool swap;
+    Node<T>* current = this->head;
+    Node<T>* sorttail = nullptr;
+    
+    while (current != sorttail){
+        swap = false;
+        Node <T>* current2 = this->head;
+        
+        while (current2->getNextNode () != sorttail){
+            if (current2->getData() > current2->getNextNode()->getData()){
+                T temp = current2 -> getData();
+                current2->setData(current2->getNextNode()->getData());
+                current2->getNextNode()->setData(temp);
+                swap = true;
+            }
+            current2 = current2->getNextNode();
+        }
+        sorttail = current2; // update tail to last swap
+        if (!swap)
+            break; // if no swap the list is already sorted
+    }
 }
 
 template<class T>
-void LinkedList<T>::bubbleSort() {
-        if (head == nullptr || head->getNextNode() == nullptr)
-            return;
-        // do not sort if empty or one
-
-        bool swap;
-        Node <T>* current = head;
-        Node <T>* tail = nullptr;
-
-        while (current != tail) {
-            swap = false;
-            Node <T>* current2 = head;
-
-            while (current2->getNextNode() != tail) {
-                if (current2->getData() > current2->getNextNode()->getData()) {
-                    T temp = current2->getData();
-                    current2->setData(current2->getNextNode()->getData());
-                    current2->getNextNode()->setData(temp);
-                    swap = true;
-                }
-                current2 = current2->getNextNode();
-
-            }
-            tail = current2; // update tail to last swap
-            if (!swap)
-                break; // if no swap the list is already sorted
-
-        }
-
-
-    }
-
-template<class T>
-void LinkedList<T>::addFromFile (std::string fileName, LinkedList<T>* list) {
+void LinkedList<T>::addFromFile (std::string fileName) {
     std::ifstream file;
     T data;
     
@@ -280,7 +286,7 @@ void LinkedList<T>::addFromFile (std::string fileName, LinkedList<T>* list) {
             break;
         }
         
-        list->add(data);
+        this->add(data);
     }
     
     if (!file.eof()) {
@@ -291,16 +297,19 @@ void LinkedList<T>::addFromFile (std::string fileName, LinkedList<T>* list) {
     file.close();
 }
 
-//Modified the list from which it was called
-//List 2 does not need to be sorted
-//Calling list will be modified and sorted
-//Second list remains unchanged
+/**
+ * Modified the LinkedList from which it was called.
+ * Calling LinkedList will be modified and sorted.
+ *
+ * @param listTwo Does not need to be sorted and remains unchanged.
+ */
 template<class T>
 void LinkedList<T>::mergeLists(const LinkedList<T>* listTwo) {
     if (!this->head && !listTwo->head) {
         return;
     }
     else {
+        mergeSort();
         Node<T>* temp = listTwo->head;
         while (temp != nullptr) {
             this->insert(temp->getData());
@@ -311,9 +320,9 @@ void LinkedList<T>::mergeLists(const LinkedList<T>* listTwo) {
 
 template<class T>
 void LinkedList<T>::print() {
-    Node<T>* temp = head;
+    Node<T>* temp = this->head;
     
-    if (head == nullptr) {
+    if (this->head == nullptr) {
         std::cout << "The linked list is empty." << std::endl;
         return;
     }
@@ -325,4 +334,44 @@ void LinkedList<T>::print() {
     
     std::cout << std::endl;
 }
+
+/**
+ * Searches for a value using binary search.
+ * Requires the list to be sorted to work.
+ *
+ * @param target The value to look for.
+ */
+template<class T>
+Node<T>* LinkedList<T>::binarySearch(T target) {
+    Node<T>* searchHead = this->head;
+    Node<T>* searchTail = this->tail;
+    Node<T>* searchMid = findMid(searchHead, searchTail);
+    if (searchHead) {
+        while (searchHead->getData() <= searchTail->getData()) {
+            if (target == searchHead->getData()) {
+                return searchHead;
+            }
+            else if (target == searchMid->getData()) {
+                return searchMid;
+            }
+            else if (target == searchTail->getData()) {
+                return searchTail;
+            }
+            
+            if (target < searchMid->getData()) {
+                searchHead = searchHead->getNextNode();
+                searchTail = searchMid->getPrevNode();
+                searchMid = findMid(searchHead, searchTail);
+            }
+            else if (target < searchMid->getData()) {
+                searchHead = searchMid->getNextNode();
+                searchTail = searchTail->getPrevNode();
+                searchMid = findMid(searchHead, searchTail);
+            }
+        }
+    }
+    
+    return nullptr;
+}
+
 #endif

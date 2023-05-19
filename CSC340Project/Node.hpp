@@ -1,9 +1,4 @@
-//
-//  Node.hpp
-//  CSC340GP
-//
-//  Created by e on 5/13/23.
-//
+
 
 #ifndef NODE_HPP
 #define NODE_HPP

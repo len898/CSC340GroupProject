@@ -1,0 +1,37 @@
+\doxysection{Vault.\+hpp}
+\hypertarget{_vault_8hpp_source}{}\label{_vault_8hpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00001}00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00002}00002\ \textcolor{comment}{//\ \ Vault.hpp}}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00003}00003\ \textcolor{comment}{//\ \ CSC340GP}}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00005}00005\ \textcolor{comment}{//\ \ Created\ by\ e\ on\ 5/18/23.}}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00006}00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#ifndef\ Vault\_hpp}}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\#define\ Vault\_hpp}}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00011}\mbox{\hyperlink{class_vault}{00011}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_vault}{Vault}}\ \{}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00012}00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00013}00013\ \ \ \ \ \mbox{\hyperlink{class_vault}{Vault}}();}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00014}00014\ \ \ \ \ \mbox{\hyperlink{class_vault}{Vault}}(\textcolor{keywordtype}{int}\ startBal);}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00015}00015\ \ \ \ \ \mbox{\hyperlink{class_vault}{\string~Vault}}();}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00016}00016\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator==(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vault}{Vault}}\&\ r);}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00018}00018\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator!=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vault}{Vault}}\&\ r);}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00019}00019\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator<(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vault}{Vault}}\&\ r);}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00020}00020\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator>(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vault}{Vault}}\&\ r);}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00021}00021\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator<=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vault}{Vault}}\&\ r);}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00022}00022\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator>=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vault}{Vault}}\&\ r);}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00023}00023\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00024}00024\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00025}00025\ \ \ \ \ \textcolor{keywordtype}{int}\ balance;}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00026}00026\ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\&\ operator<<(std::ostream\&\ os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_vault}{Vault}}\&\ v)\ \{}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00027}00027\ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}Vault\ with\ balance:\ "{}}\ <<\ v.balance;}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00030}00030\ \};}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}Vault.cpp"{}}}
+\DoxyCodeLine{\Hypertarget{_vault_8hpp_source_l00032}00032\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ Vault\_hpp\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

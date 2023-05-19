@@ -1,0 +1,56 @@
+\doxysection{Node.\+cpp}
+\hypertarget{_node_8cpp_source}{}\label{_node_8cpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#ifndef\ NODE\_CPP}}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#define\ NODE\_CPP}}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}Node.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00016}00016\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00017}\mbox{\hyperlink{class_node_a0ac1d44cfe588be564acf25485029bd8}{00017}}\ \mbox{\hyperlink{class_node_a0ac1d44cfe588be564acf25485029bd8}{Node<T>::Node}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00018}00018\ \ \ \ \ this-\/>data\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00019}00019\ \ \ \ \ this-\/>next\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00020}00020\ \ \ \ \ this-\/>prev\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00021}00021\ \}}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00027}00027\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00028}\mbox{\hyperlink{class_node_a0692b16d246460bf94c18d49592facdd}{00028}}\ \mbox{\hyperlink{class_node_a0ac1d44cfe588be564acf25485029bd8}{Node<T>::Node}}(T\ data)\ \{}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00029}00029\ \ \ \ \ this-\/>data\ =\ data;}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00030}00030\ \ \ \ \ this-\/>next\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00031}00031\ \ \ \ \ this-\/>prev\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00032}00032\ \}}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00038}00038\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00039}\mbox{\hyperlink{class_node_ae923d0417581dd19784d55b901f0f7f0}{00039}}\ \mbox{\hyperlink{class_node_ae923d0417581dd19784d55b901f0f7f0}{Node<T>::\string~Node}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00040}00040\ \ \ \ \ this-\/>next\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00041}00041\ \ \ \ \ this-\/>prev\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00042}00042\ \}}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00044}00044\ \textcolor{comment}{//\ getters}}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00045}00045\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00046}00046\ T\ \mbox{\hyperlink{class_node}{Node<T>::\ getData}}()\ \{\textcolor{keywordflow}{return}\ this-\/>data;\}}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00048}00048\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00049}00049\ \mbox{\hyperlink{class_node}{Node<T>}}*\ \mbox{\hyperlink{class_node}{Node<T>::getNextNode}}()\ \{\textcolor{keywordflow}{return}\ this-\/>next;\}}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00051}00051\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00052}00052\ \mbox{\hyperlink{class_node}{Node<T>}}*\ \mbox{\hyperlink{class_node}{Node<T>::getPrevNode}}()\ \{\textcolor{keywordflow}{return}\ this-\/>prev;\}}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00054}00054\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00055}00055\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_node}{Node<T>::setData}}(T\ data)\ \{this-\/>data\ =\ data;\}}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00057}00057\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00058}00058\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_node}{Node<T>::setNextNode}}(\mbox{\hyperlink{class_node}{Node}}*\ next)\ \{this-\/>next\ =\ next;\}}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00060}00060\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00061}00061\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_node}{Node<T>::setPrevNode}}(\mbox{\hyperlink{class_node}{Node}}*\ prev)\ \{this-\/>prev\ =\ prev;\}}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00063}00063\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00064}00064\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_node}{Node<T>::setNextNodeNull}}()\ \{this-\/>next\ =\ \textcolor{keyword}{nullptr};\}}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00066}00066\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00067}00067\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_node}{Node<T>::setPrevNodeNull}}()\ \{this-\/>prev\ =\ \textcolor{keyword}{nullptr};\}}
+\DoxyCodeLine{\Hypertarget{_node_8cpp_source_l00068}00068\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

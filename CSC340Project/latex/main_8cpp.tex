@@ -1,0 +1,96 @@
+\doxysection{main.\+cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{main.cpp@{main.cpp}}
+
+
+Spring 2023 -\/ CSC340.\+05 Final Project.  
+
+
+{\ttfamily \#include \"{}Linked\+List.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}Function\+Tests.\+hpp\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8cpp_ac0f2228420376f4db7e1274f2b41667c}{main}} (int argc, const char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Spring 2023 -\/ CSC340.\+05 Final Project. 
+
+This is the final project to make a custom \doxylink{class_linked_list}{Linked\+List} and \doxylink{class_node}{Node} class project for Spring 2023 -\/ CSC340.\+05
+
+\begin{DoxyAuthor}{Author}
+Ashley Ching 
+
+Charlene Breanne Calderon 
+
+Eduardo Loza 
+
+Lennart Richter 
+\end{DoxyAuthor}
+
+
+Definition in file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8cpp_ac0f2228420376f4db7e1274f2b41667c}\label{main_8cpp_ac0f2228420376f4db7e1274f2b41667c} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\ -\/-\/\ Add\ and\ Remove\ Node\ Test"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00020\ \ \ \ \ testAddRemove();}
+\DoxyCodeLine{00021\ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\ -\/-\/\ Search\ For\ Node\ Test\ -\/-\/\ "{}}\ <<\ std::endl;}
+\DoxyCodeLine{00024\ \ \ \ \ testSearch();}
+\DoxyCodeLine{00025\ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\ -\/-\/\ Merge\ LinkedLists\ Test\ -\/-\/\ "{}}\ <<\ std::endl;}
+\DoxyCodeLine{00028\ \ \ \ \ testMerge();}
+\DoxyCodeLine{00029\ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\ -\/-\/\ Merge\ Sort\ Test\ -\/-\/\ "{}}\ <<\ std::endl;}
+\DoxyCodeLine{00032\ \ \ \ \ testMergeSort();}
+\DoxyCodeLine{00033\ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00034\ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\ -\/-\/\ Add\ From\ File\ Test\ -\/-\/\ "{}}\ <<\ std::endl;}
+\DoxyCodeLine{00036\ \ \ \ \ testAddFromFile();}
+\DoxyCodeLine{00037\ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00038\ \ \ \ \ }
+\DoxyCodeLine{00039\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\ -\/-\/\ Bubble\ Sort\ Test\ -\/-\/\ "{}}\ <<\ std::endl;}
+\DoxyCodeLine{00040\ \ \ \ \ testBubbleSort();}
+\DoxyCodeLine{00041\ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00042\ \ \ \ \ }
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{class_linked_list}{LinkedList<int>}}*\ list\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_linked_list}{LinkedList<int>}};}
+\DoxyCodeLine{00044\ \ \ \ \ list-\/>\mbox{\hyperlink{class_linked_list_aad1e9d6d7611d4f0bfde0e90da2c108b}{add}}(3);}
+\DoxyCodeLine{00045\ \ \ \ \ list-\/>\mbox{\hyperlink{class_linked_list_aad1e9d6d7611d4f0bfde0e90da2c108b}{add}}(2);}
+\DoxyCodeLine{00046\ \ \ \ \ list-\/>\mbox{\hyperlink{class_linked_list_aad1e9d6d7611d4f0bfde0e90da2c108b}{add}}(35);}
+\DoxyCodeLine{00047\ \ \ \ \ list-\/>\mbox{\hyperlink{class_linked_list_aad1e9d6d7611d4f0bfde0e90da2c108b}{add}}(52);}
+\DoxyCodeLine{00048\ \ \ \ \ list-\/>\mbox{\hyperlink{class_linked_list_aad1e9d6d7611d4f0bfde0e90da2c108b}{add}}(5);}
+\DoxyCodeLine{00049\ \ \ \ \ list-\/>\mbox{\hyperlink{class_linked_list_a9675767b81fb9f1d8799444e4ee7f43b}{print}}();}
+\DoxyCodeLine{00050\ \ \ \ \ list-\/>\mbox{\hyperlink{class_linked_list_ae0eea63e4ab6ec45da58dc483b6e38bb}{insert}}(25);}
+\DoxyCodeLine{00051\ \ \ \ \ list-\/>mergeSort();}
+\DoxyCodeLine{00052\ \ \ \ \ list-\/>\mbox{\hyperlink{class_linked_list_a9675767b81fb9f1d8799444e4ee7f43b}{print}}();}
+\DoxyCodeLine{00053\ \ \ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ list-\/>\mbox{\hyperlink{class_linked_list_af3165014de430970859765572a8a11e3}{addFromFile}}(\textcolor{stringliteral}{"{}dict.txt"{}});}
+\DoxyCodeLine{00055\ \ \ \ \ list-\/>\mbox{\hyperlink{class_linked_list_a9675767b81fb9f1d8799444e4ee7f43b}{print}}();}
+\DoxyCodeLine{00056\ \ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ list-\/>bubbleSort();}
+\DoxyCodeLine{00058\ \ \ \ \ list-\/>\mbox{\hyperlink{class_linked_list_a9675767b81fb9f1d8799444e4ee7f43b}{print}}();}
+\DoxyCodeLine{00059\ \ \ \ \ }
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00062\ \}}
+
+\end{DoxyCode}
