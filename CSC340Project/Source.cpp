@@ -1073,8 +1073,14 @@ void demo() {
 			std::cout << "Enter the value of the vault to be removed: ";
 			int vaultVal;
 			std::cin >> vaultVal;
-			BankSystem.remove(vaultVal);
-			std::cout << "Removed Vault with value " << vaultVal << std::endl;
+			if (BankSystem.search(vaultVal)) {
+				BankSystem.remove(vaultVal);
+				std::cout << "Removed Vault with value " << vaultVal << std::endl;
+			}
+			else {
+				std::cout << "That vault does not exist" << std::endl;
+			}
+
 			break;
 		case -1:
 			std::cout << "Thank you for using the Banking System" << std::endl;
