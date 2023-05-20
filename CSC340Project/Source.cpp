@@ -1011,6 +1011,7 @@ void demo() {
 		std::cout << "Enter '5' to bubble sort the Bank System" << std::endl;
 		std::cout << "Enter '6' to merge sort the Bank System" << std::endl;
 		std::cout << "Enter '7' to merge another Bank System into this one" << std::endl;
+		std::cout << "Enter '8' to remove a vault from the Bank System" << std::endl;
 		std::cout << "Enter '-1' to exit the management system" << std::endl;
 		std::cout << "Console: ";
 		std::cin >> choice;
@@ -1067,6 +1068,19 @@ void demo() {
 			BankSystem.mergeLists(&BankSystem2);
 			std::cout << "New Merge System: ";
 			BankSystem.print();
+			break;
+		case 8:
+			std::cout << "Enter the value of the vault to be removed: ";
+			int vaultVal;
+			std::cin >> vaultVal;
+			if (BankSystem.search(vaultVal)) {
+				BankSystem.remove(vaultVal);
+				std::cout << "Removed Vault with value " << vaultVal << std::endl;
+			}
+			else {
+				std::cout << "That vault does not exist" << std::endl;
+			}
+
 			break;
 		case -1:
 			std::cout << "Thank you for using the Banking System" << std::endl;
